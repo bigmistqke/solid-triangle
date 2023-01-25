@@ -25,6 +25,8 @@ pnpm add solid-triangle
 
 Use it:
 
+### simple example
+
 ```tsx
 import {Canvas, Scene, Camera, Mesh, Material, Geometry} from 'solid-triangle'
 
@@ -43,7 +45,10 @@ const App => (
       </Mesh>
     </Scene>
   </Canvas>
-)```
+)
+```
+
+### scene-management with `createSelector`
 
 ```tsx
 import {Canvas, Scene, Camera, Mesh, Material, Geometry} from 'solid-triangle'
@@ -72,6 +77,8 @@ const App => (
   </Canvas>
 )
 ```
+
+### scene-management with `<Selector.Scene>`
 
 ```tsx
 import {Canvas, Scene, Camera, Mesh, Material, Geometry, Selector} from 'solid-triangle'
