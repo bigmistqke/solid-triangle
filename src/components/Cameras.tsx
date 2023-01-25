@@ -1,11 +1,13 @@
 import { createEffect, mergeProps } from 'solid-js'
 import * as THREE from 'three'
-import { useTriangle } from '../'
+import { AnimationSet, useTriangle } from '../'
 import { createPropsEffect, createRefEffect, createTransformEffect } from '../Effects'
 import { createToken } from '../ParserFunctions'
 import type {
+  PropsCubeCamera,
   PropsOrthographicCamera,
   PropsPerspectiveCamera,
+  TokenCubeCamera,
   TokenOrthographicCamera,
   TokenPerspectiveCamera,
 } from './Cameras.types'
@@ -24,6 +26,8 @@ export const Camera = {
     const three = new THREE.PerspectiveCamera(merged.fov, merged.aspect, merged.near, merged.far)
 
     createRefEffect(three, merged)
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     createTransformEffect(three, merged)
     createPropsEffect(three, merged, ['position', 'rotation', 'scale', 'id'])
 
@@ -74,6 +78,47 @@ export const Camera = {
     return {
       props,
       id: 'OrthographicCamera',
+      type: 'Camera',
+      three,
+    }
+  }),
+  Cube: createToken<PropsCubeCamera, TokenCubeCamera>(props => {
+    const merged = mergeProps(
+      {
+        active: false,
+        near: 0.1,
+        far: 2000,
+        renderTarget: new THREE.WebGLCubeRenderTarget(128, {
+          generateMipmaps: true,
+          minFilter: THREE.LinearMipmapLinearFilter,
+        }),
+      },
+      props,
+    )
+    const three = new THREE.CubeCamera(merged.near, merged.far, merged.renderTarget)
+
+    createRefEffect(three, merged)
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    createTransformEffect(three, merged)
+    createPropsEffect(three, merged, ['position', 'rotation', 'scale', 'id'])
+
+    const context = useTriangle()
+
+    const animate = () => {
+      const renderer = context.renderer?.()
+      const scene = context.scene?.()
+      if (renderer instanceof THREE.WebGLRenderer && scene) three.update(renderer, scene)
+    }
+
+    createEffect(() => {
+      if (merged.active && context.renderer?.() && context.scene?.()) AnimationSet.add(animate)
+      else AnimationSet.delete(animate)
+    })
+
+    return {
+      props,
+      id: 'CubeCamera',
       type: 'Camera',
       three,
     }

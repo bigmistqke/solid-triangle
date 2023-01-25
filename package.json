@@ -57,6 +57,7 @@
     "solid-js": "^1.6.0"
   },
   "devDependencies": {
+    "@types/three": "^0.148.1",
     "concurrently": "^7.6.0",
     "esbuild": "^0.17.2",
     "esbuild-plugin-solid": "^0.4.2",

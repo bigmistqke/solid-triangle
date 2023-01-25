@@ -1,7 +1,7 @@
-import { createEffect, createMemo } from "solid-js";
-import * as THREE from "three";
-import { createToken, isToken } from "../ParserFunctions";
-import { createRefEffect } from "../Effects";
+import { createEffect, createMemo } from 'solid-js'
+import * as THREE from 'three'
+import { createToken, isToken } from '../ParserFunctions'
+import { createRefEffect } from '../Effects'
 import type {
   PropsBoxGeometry,
   PropsBufferGeometry,
@@ -46,10 +46,21 @@ import type {
   TokenTorusKnotGeometry,
   TokenTubeGeometry,
   TokenWireframeGeometry,
-} from "./Geometries.types";
-import { Vector2, Vector3 } from "three";
-
-export const BoxGeometry = createToken<PropsBoxGeometry, TokenBoxGeometry>((props) => {
+} from './Geometries.types'
+import { Vector2, Vector3 } from 'three'
+/**
+ * Renders a new component with props
+ *
+ * Used by external plugins
+ *
+ * @typedef {Object} Props
+ * @property {String} action an action to execute
+ * @property {String} [errorMessage="default message"] an optional error message to show (with default value)
+ *
+ * @param {Props} prop
+ * @return {Promise<string>} a string with the content
+ */
+export const BoxGeometry = createToken<PropsBoxGeometry, TokenBoxGeometry>(props => {
   const geometry = createMemo(
     () =>
       new THREE.BoxGeometry(
@@ -60,18 +71,18 @@ export const BoxGeometry = createToken<PropsBoxGeometry, TokenBoxGeometry>((prop
         props.heightSegments,
         props.depthSegments,
       ),
-  );
-  createEffect(() => geometry() && props.ref?.(geometry()));
+  )
+  createEffect(() => geometry() && props.ref?.(geometry()))
 
   return {
     props,
-    id: "BoxGeometry",
-    type: "Geometry",
+    id: 'BoxGeometry',
+    type: 'Geometry',
     three: geometry,
-  };
-});
+  }
+})
 
-export const SphereGeometry = createToken<PropsSphereGeometry, TokenSphereGeometry>((props) => {
+export const SphereGeometry = createToken<PropsSphereGeometry, TokenSphereGeometry>(props => {
   const three = createMemo(
     () =>
       new THREE.SphereGeometry(
@@ -83,17 +94,17 @@ export const SphereGeometry = createToken<PropsSphereGeometry, TokenSphereGeomet
         props.thetaStart,
         props.thetaLength,
       ),
-  );
-  createRefEffect(three, props);
+  )
+  createRefEffect(three, props)
   return {
     props,
-    id: "SphereGeometry",
-    type: "Geometry",
+    id: 'SphereGeometry',
+    type: 'Geometry',
     three,
-  };
-});
+  }
+})
 
-export const CapsuleGeometry = createToken<PropsCapsuleGeometry, TokenCapsuleGeometry>((props) => {
+export const CapsuleGeometry = createToken<PropsCapsuleGeometry, TokenCapsuleGeometry>(props => {
   const three = createMemo(
     () =>
       new THREE.CapsuleGeometry(
@@ -102,32 +113,32 @@ export const CapsuleGeometry = createToken<PropsCapsuleGeometry, TokenCapsuleGeo
         props.capSupDivisions,
         props.radialSegments,
       ),
-  );
-  createRefEffect(three, props);
+  )
+  createRefEffect(three, props)
 
   return {
     props,
-    id: "CapsuleGeometry",
-    type: "Geometry",
+    id: 'CapsuleGeometry',
+    type: 'Geometry',
     three,
-  };
-});
+  }
+})
 
-export const CircleGeometry = createToken<PropsCircleGeometry, TokenCircleGeometry>((props) => {
+export const CircleGeometry = createToken<PropsCircleGeometry, TokenCircleGeometry>(props => {
   const three = createMemo(
     () =>
       new THREE.CircleGeometry(props.radius, props.segments, props.thetaStart, props.thetaLength),
-  );
-  createRefEffect(three, props);
+  )
+  createRefEffect(three, props)
   return {
     props,
-    id: "CircleGeometry",
-    type: "Geometry",
+    id: 'CircleGeometry',
+    type: 'Geometry',
     three,
-  };
-});
+  }
+})
 
-export const ConeGeometry = createToken<PropsConeGeometry, TokenConeGeometry>((props) => {
+export const ConeGeometry = createToken<PropsConeGeometry, TokenConeGeometry>(props => {
   const three = createMemo(
     () =>
       new THREE.ConeGeometry(
@@ -139,146 +150,144 @@ export const ConeGeometry = createToken<PropsConeGeometry, TokenConeGeometry>((p
         props.thetaStart,
         props.thetaLength,
       ),
-  );
-  createRefEffect(three, props);
+  )
+  createRefEffect(three, props)
   return {
-    id: "ConeGeometry",
-    type: "Geometry",
+    id: 'ConeGeometry',
+    type: 'Geometry',
     props,
     three,
-  };
-});
+  }
+})
 
-export const CylinderGeometry = createToken<PropsCylinderGeometry, TokenCylinderGeometry>(
-  (props) => {
-    const three = createMemo(
-      () =>
-        new THREE.CylinderGeometry(
-          props.radiusTop,
-          props.radiusBottom,
-          props.height,
-          props.radialSegments,
-          props.heightSegments,
-          props.openEnded,
-          props.thetaStart,
-          props.thetaLength,
-        ),
-    );
-    createRefEffect(three, props);
-    return {
-      props,
-      id: "CylinderGeometry",
-      type: "Geometry",
-      three,
-    };
-  },
-);
+export const CylinderGeometry = createToken<PropsCylinderGeometry, TokenCylinderGeometry>(props => {
+  const three = createMemo(
+    () =>
+      new THREE.CylinderGeometry(
+        props.radiusTop,
+        props.radiusBottom,
+        props.height,
+        props.radialSegments,
+        props.heightSegments,
+        props.openEnded,
+        props.thetaStart,
+        props.thetaLength,
+      ),
+  )
+  createRefEffect(three, props)
+  return {
+    props,
+    id: 'CylinderGeometry',
+    type: 'Geometry',
+    three,
+  }
+})
 
 export const DodecahedronGeometry = createToken<
   PropsDodecahedronGeometry,
   TokenDodecahedronGeometry
->((props) => {
-  const three = createMemo(() => new THREE.DodecahedronGeometry(props.radius, props.detail));
-  createRefEffect(three, props);
+>(props => {
+  const three = createMemo(() => new THREE.DodecahedronGeometry(props.radius, props.detail))
+  createRefEffect(three, props)
   return {
     props,
-    id: "DodecahedronGeometry",
-    type: "Geometry",
+    id: 'DodecahedronGeometry',
+    type: 'Geometry',
     three,
-  };
-});
+  }
+})
 
-export const EdgesGeometry = createToken<PropsEdgesGeometry, TokenEdgesGeometry>((props) => {
-  const three = createMemo(() => new THREE.EdgesGeometry(props.geometry, props.thresholdAngle));
-  createRefEffect(three, props);
+export const EdgesGeometry = createToken<PropsEdgesGeometry, TokenEdgesGeometry>(props => {
+  const three = createMemo(() => new THREE.EdgesGeometry(props.geometry, props.thresholdAngle))
+  createRefEffect(three, props)
   return {
     props,
-    id: "EdgesGeometry",
-    type: "Geometry",
+    id: 'EdgesGeometry',
+    type: 'Geometry',
     three,
-  };
-});
+  }
+})
 
-export const ExtrudeGeometry = createToken<PropsExtrudeGeometry, TokenExtrudeGeometry>((props) => {
-  const three = createMemo(() => new THREE.ExtrudeGeometry(props.shapes, props.options));
-  createRefEffect(three, props);
+export const ExtrudeGeometry = createToken<PropsExtrudeGeometry, TokenExtrudeGeometry>(props => {
+  const three = createMemo(() => new THREE.ExtrudeGeometry(props.shapes, props.options))
+  createRefEffect(three, props)
   return {
     props,
-    id: "ExtrudeGeometry",
-    type: "Geometry",
+    id: 'ExtrudeGeometry',
+    type: 'Geometry',
     three,
-  };
-});
+  }
+})
 
 export const IcosahedronGeometry = createToken<PropsIcosahedronGeometry, TokenIcosahedronGeometry>(
-  (props) => {
-    const three = createMemo(() => new THREE.IcosahedronGeometry(props.radius, props.detail));
-    createRefEffect(three, props);
+  props => {
+    const three = createMemo(() => new THREE.IcosahedronGeometry(props.radius, props.detail))
+    createRefEffect(three, props)
     return {
       props,
-      id: "IcosahedronGeometry",
-      type: "Geometry",
+      id: 'IcosahedronGeometry',
+      type: 'Geometry',
       three,
-    };
+    }
   },
-);
+)
 
-export const LatheGeometry = createToken<PropsLatheGeometry, TokenLatheGeometry>((props) => {
+export const LatheGeometry = createToken<PropsLatheGeometry, TokenLatheGeometry>(props => {
   const three = createMemo(
     () => new THREE.LatheGeometry(props.points, props.segments, props.phiStart, props.phiLength),
-  );
-  createRefEffect(three, props);
+  )
+  createRefEffect(three, props)
   return {
     props,
-    id: "LatheGeometry",
-    type: "Geometry",
+    id: 'LatheGeometry',
+    type: 'Geometry',
     three,
-  };
-});
+  }
+})
 
 export const OctahedronGeometry = createToken<PropsDodecahedronGeometry, TokenOctahedronGeometry>(
-  (props) => {
-    const three = createMemo(() => new THREE.OctahedronGeometry(props.radius, props.detail));
-    createRefEffect(three, props);
+  props => {
+    const three = createMemo(() => new THREE.OctahedronGeometry(props.radius, props.detail))
+    createRefEffect(three, props)
     return {
       props,
-      id: "OctahedronGeometry",
-      type: "Geometry",
+      id: 'OctahedronGeometry',
+      type: 'Geometry',
       three,
-    };
+    }
   },
-);
+)
 
-export const PlaneGeometry = createToken<PropsPlaneGeometry, TokenPlaneGeometry>((props) => {
+export const PlaneGeometry = createToken<PropsPlaneGeometry, TokenPlaneGeometry>(props => {
   const three = createMemo(
     () =>
       new THREE.PlaneGeometry(props.width, props.height, props.widthSegments, props.heightSegments),
-  );
-  createRefEffect(three, props);
+  )
+  createRefEffect(three, props)
   return {
     props,
-    id: "PlaneGeometry",
-    type: "Geometry",
+    id: 'PlaneGeometry',
+    type: 'Geometry',
     three,
-  };
-});
+  }
+})
 
 export const PolyhedronGeometry = createToken<PropsPolyhedronGeometry, TokenPolyhedronGeometry>(
-  (props) => {
+  props => {
     const three = createMemo(
       () => new THREE.PolyhedronGeometry(props.vertices, props.indices, props.radius, props.detail),
-    );
-    createRefEffect(three, props);
+    )
+    createRefEffect(three, props)
     return {
       props,
-      id: "PolyhedronGeometry",
-      type: "Geometry",
+      id: 'PolyhedronGeometry',
+      type: 'Geometry',
       three,
-    };
+    }
   },
-);
+)
 
-export const RingGeometry = createToken<PropsRingGeometry, TokenRingGeometry>((props) => {
+export const RingGeometry = createToken<PropsRingGeometry, TokenRingGeometry>(props => {
   const three = createMemo(
     () =>
       new THREE.RingGeometry(
@@ -289,41 +298,41 @@ export const RingGeometry = createToken<PropsRingGeometry, TokenRingGeometry>((p
         props.thetaStart,
         props.thetaLength,
       ),
-  );
-  createRefEffect(three, props);
+  )
+  createRefEffect(three, props)
   return {
     props,
-    id: "RingGeometry",
-    type: "Geometry",
+    id: 'RingGeometry',
+    type: 'Geometry',
     three,
-  };
-});
+  }
+})
 
-export const ShapeGeometry = createToken<PropsShapeGeometry, TokenShapeGeometry>((props) => {
-  const three = createMemo(() => new THREE.ShapeGeometry(props.shapes, props.curveSegments));
-  createRefEffect(three, props);
+export const ShapeGeometry = createToken<PropsShapeGeometry, TokenShapeGeometry>(props => {
+  const three = createMemo(() => new THREE.ShapeGeometry(props.shapes, props.curveSegments))
+  createRefEffect(three, props)
   return {
     props,
-    id: "ShapeGeometry",
-    type: "Geometry",
+    id: 'ShapeGeometry',
+    type: 'Geometry',
     three,
-  };
-});
+  }
+})
 
 export const TetrahedronGeometry = createToken<PropsTetrahedronGeometry, TokenTetrahedronGeometry>(
-  (props) => {
-    const three = createMemo(() => new THREE.TetrahedronGeometry(props.radius, props.detail));
-    createRefEffect(three, props);
+  props => {
+    const three = createMemo(() => new THREE.TetrahedronGeometry(props.radius, props.detail))
+    createRefEffect(three, props)
     return {
       props,
-      id: "TetrahedronGeometry",
-      type: "Geometry",
+      id: 'TetrahedronGeometry',
+      type: 'Geometry',
       three,
-    };
+    }
   },
-);
+)
 
-export const TorusGeometry = createToken<PropsTorusGeometry, TokenTorusGeometry>((props) => {
+export const TorusGeometry = createToken<PropsTorusGeometry, TokenTorusGeometry>(props => {
   const three = createMemo(
     () =>
       new THREE.TorusGeometry(
@@ -333,18 +342,18 @@ export const TorusGeometry = createToken<PropsTorusGeometry, TokenTorusGeometry>
         props.tubularSegments,
         props.arc,
       ),
-  );
-  createRefEffect(three, props);
+  )
+  createRefEffect(three, props)
   return {
     props,
-    id: "TorusGeometry",
-    type: "Geometry",
+    id: 'TorusGeometry',
+    type: 'Geometry',
     three,
-  };
-});
+  }
+})
 
 export const TorusKnotGeometry = createToken<PropsTorusKnotGeometry, TokenTorusKnotGeometry>(
-  (props) => {
+  props => {
     const three = createMemo(
       () =>
         new THREE.TorusKnotGeometry(
@@ -355,18 +364,18 @@ export const TorusKnotGeometry = createToken<PropsTorusKnotGeometry, TokenTorusK
           props.p,
           props.q,
         ),
-    );
-    createRefEffect(three, props);
+    )
+    createRefEffect(three, props)
     return {
       props,
-      id: "TorusKnotGeometry",
-      type: "Geometry",
+      id: 'TorusKnotGeometry',
+      type: 'Geometry',
       three,
-    };
+    }
   },
-);
+)
 
-export const TubeGeometry = createToken<PropsTubeGeometry, TokenTubeGeometry>((props) => {
+export const TubeGeometry = createToken<PropsTubeGeometry, TokenTubeGeometry>(props => {
   const three = createMemo(
     () =>
       new THREE.TubeGeometry(
@@ -376,55 +385,55 @@ export const TubeGeometry = createToken<PropsTubeGeometry, TokenTubeGeometry>((p
         props.radialSegments,
         props.arc,
       ),
-  );
-  createRefEffect(three, props);
+  )
+  createRefEffect(three, props)
   return {
     props,
-    id: "TubeGeometry",
-    type: "Geometry",
+    id: 'TubeGeometry',
+    type: 'Geometry',
     three,
-  };
-});
+  }
+})
 
 export const WireframeGeometry = createToken<PropsWireframeGeometry, TokenWireframeGeometry>(
-  (props) => {
-    const three = createMemo(() => new THREE.WireframeGeometry(props.geometry));
-    createRefEffect(three, props);
+  props => {
+    const three = createMemo(() => new THREE.WireframeGeometry(props.geometry))
+    createRefEffect(three, props)
     return {
       props,
-      id: "WireframeGeometry",
-      type: "Geometry",
+      id: 'WireframeGeometry',
+      type: 'Geometry',
       three,
-    };
+    }
   },
-);
+)
 
-export const BufferGeometry = createToken<PropsBufferGeometry, TokenBufferGeometry>((props) => {
+export const BufferGeometry = createToken<PropsBufferGeometry, TokenBufferGeometry>(props => {
   const three = createMemo(() => {
     if (props.points) {
-      if (typeof props.points === "function") {
-        const token = isToken(props.points);
-        if (token && token.type === "Curve") {
-          return new THREE.BufferGeometry().setFromPoints(token.points());
+      if (typeof props.points === 'function') {
+        const token = isToken(props.points)
+        if (token && token.type === 'Curve') {
+          return new THREE.BufferGeometry().setFromPoints(token.points())
         } else {
           console.error(
-            "FunctionElement passed to BufferGeometry currently only accepts either an array of points or a ThreeToken",
-          );
+            'FunctionElement passed to BufferGeometry currently only accepts either an array of points or a ThreeToken',
+          )
         }
       } else if (Array.isArray(props.points)) {
-        return new THREE.BufferGeometry().setFromPoints(props.points as any);
+        return new THREE.BufferGeometry().setFromPoints(props.points as any)
       }
     }
-    return new THREE.BufferGeometry();
-  });
-  createRefEffect(three, props);
+    return new THREE.BufferGeometry()
+  })
+  createRefEffect(three, props)
   return {
     props,
-    id: "BufferGeometry",
-    type: "Geometry",
+    id: 'BufferGeometry',
+    type: 'Geometry',
     three,
-  };
-});
+  }
+})
 
 export const Geometry = {
   Box: BoxGeometry,
@@ -449,4 +458,4 @@ export const Geometry = {
   Tube: TubeGeometry,
   Wireframe: WireframeGeometry,
   Buffer: BufferGeometry,
-};
+}

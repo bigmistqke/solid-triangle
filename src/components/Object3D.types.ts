@@ -1,35 +1,41 @@
-import { NestedFromInstance } from "../BaseTypes";
+import { JSXElement } from 'solid-js'
+import { NestedFromInstance } from '../BaseTypes'
 
-export type PropsGroup = NestedFromInstance<THREE.Group>;
+export type PropsGroup = NestedFromInstance<THREE.Group>
 export type TokenGroup = {
-  id: "Group";
-  type: "Object3D";
-  three: THREE.Group;
-  props: PropsGroup;
-};
+  id: 'Group'
+  type: 'Object3D'
+  three: THREE.Group
+  props: PropsGroup
+}
 
-export type PropsMesh = NestedFromInstance<THREE.Mesh>;
+export type PropsMesh = NestedFromInstance<THREE.Mesh>
 export type TokenMesh = {
-  id: "Mesh";
-  type: "Object3D";
-  three: THREE.Mesh;
-  props: PropsMesh;
-};
+  id: 'Mesh'
+  type: 'Object3D'
+  three: THREE.Mesh
+  props: PropsMesh
+}
 
-export type PropsLine = NestedFromInstance<THREE.Line>;
+export type PropsLine = NestedFromInstance<THREE.Line>
 export type TokenLine = {
-  id: "Line";
-  type: "Object3D";
-  three: THREE.Line;
-  props: PropsLine;
-};
+  id: 'Line'
+  type: 'Object3D'
+  three: THREE.Line
+  props: PropsLine
+}
 
-export type PropsScene = (NestedFromInstance<THREE.Scene> & { active?: boolean }) | { id: string };
+export type PropsScene =
+  | Omit<NestedFromInstance<THREE.Scene>, 'id'> & {
+      active?: boolean
+      id: string | number
+      children: JSXElement | JSXElement[]
+    }
 export type TokenScene = {
-  id: "Scene";
-  type: "Scene";
-  three: THREE.Scene;
-  props: PropsScene;
-};
+  id: 'Scene'
+  type: 'Scene'
+  three: THREE.Scene
+  props: PropsScene
+}
 
-export type TokenObject3Ds = TokenGroup | TokenMesh | TokenLine | TokenScene;
+export type TokenObject3Ds = TokenGroup | TokenMesh | TokenLine | TokenScene
