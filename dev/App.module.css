@@ -23,6 +23,10 @@
   color: #b318f0;
 }
 
+button.hovered {
+  background: var(--button-selected-bg);
+}
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);

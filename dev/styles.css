@@ -1,11 +1,44 @@
 body {
   margin: 0;
+  overflow: hidden;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: white;
+
+  --button-selected-bg: rgb(198, 198, 198);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+@font-face {
+  font-family: 'apple';
+  src: url('./AppleGaramond-Light.ttf') format('truetype');
+}
+
+* {
+  box-sizing: content-box;
+  /* transform-style: preserve-3d; */
+}
+
+button {
+  font-size: 8pt !important;
+  border-radius: 10px;
+  box-shadow: none;
+  border: none;
+  /* border: 1px solid rgb(212, 212, 212); */
+  background: rgb(238, 238, 238);
+  padding-left: 10px;
+  padding-top: 2px;
+  padding-right: 10px;
+  padding-bottom: 2px;
+  cursor: pointer;
+  transition: background 0.125s;
+}
+
+button:hover {
+  background: var(--button-selected-bg);
 }

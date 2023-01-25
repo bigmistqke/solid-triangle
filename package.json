@@ -1,17 +1,17 @@
 {
   "version": "0.0.0",
-  "name": "{{name_of_lib}}",
-  "description": "{{desc_of_lib}}",
+  "name": "solid-triangle",
+  "description": "a threejs wrapper for solidjs, powered by @solid-primitives/jsxParser",
   "license": "MIT",
-  "author": "{{me}}",
+  "author": "bigmistqke",
   "contributors": [],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/{{me}}/{{name_of_lib}}.git"
+    "url": "git+https://github.com/bigmistqke/solid-triangle.git"
   },
-  "homepage": "https://github.com/{{me}}/{{name_of_lib}}#readme",
+  "homepage": "https://github.com/bigmistqke/solid-triangle#readme",
   "bugs": {
-    "url": "https://github.com/{{me}}/{{name_of_lib}}/issues"
+    "url": "https://github.com/bigmistqke/solid-triangle/issues"
   },
   "files": [
     "dist"
@@ -73,5 +73,8 @@
   "keywords": [
     "solid"
   ],
-  "packageManager": "pnpm@7.22.0"
+  "packageManager": "pnpm@7.22.0",
+  "dependencies": {
+    "three": "^0.148.0"
+  }
 }
