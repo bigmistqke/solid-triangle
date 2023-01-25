@@ -61,7 +61,7 @@ createEffect(() => {
   // do some imperative code
   m.material.color = new THREE.Color('blue')
   m.material.needsUpdate = true
-}, 1000)
+})
 
 const App => (
   <Canvas> // uses default camera and scene
