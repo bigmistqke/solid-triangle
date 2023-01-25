@@ -68,7 +68,7 @@ const [mesh, setMesh] = createSignal<THREE.Mesh>();
 
 setTimeout(() => {
   // do some imperative code
-  mesh()!.material.color = new THREE.Color('blue');  
+  mesh()!.material.color = new THREE.Color('blue');
   mesh()!.material.needsUpdate = true;
 }, 1000)
 
@@ -168,7 +168,7 @@ const App => (
 )
 ```
 
-Progress:
+API-coverage:
 
 - Animation
   - [ ] AnimationAction
@@ -182,6 +182,9 @@ Progress:
   - [ ] QuaternionKeyframeTrack
   - [ ] StringKeyframeTrack
   - [ ] VectorKeyframeTrack
+  - [ ] CCDIKSolver
+  - [ ] MMDAnimationHelper
+  - [ ] MMDPhysics
 - Audio
   - [ ] AudioAnalyser
   - [ ] AudioContext
@@ -194,6 +197,18 @@ Progress:
   - [ ] OrthographicCamera
   - [x] PerspectiveCamera as Camera.Perspective
   - [ ] StereoCamera
+- Controls
+  - [ ] ArcballControls
+  - [ ] DragControls
+  - [ ] FirstPersonControls
+  - [ ] FlyControls
+  - [x] OrbitControls as Controls.Orbit
+  - [ ] PointerLockControls
+  - [ ] TrackballControls
+  - [ ] TransformControls
+- CSS3D
+  - [x] CSS3DObject
+  - [ ] CSS3DSprite
 - Curves
   - [ ] ArcCurve
   - [ ] CatmullRomCurve3
@@ -205,6 +220,31 @@ Progress:
   - [ ] QuadraticBezierCurve
   - [ ] QuadraticBezierCurve3
   - [ ] SplineCurve
+- Exporter
+  - [ ] ColladaExporter
+  - [ ] EXRExporter
+  - [ ] GLTFExporter
+  - [ ] OBJExporter
+  - [ ] PLYExporter
+- Helpers
+  - [ ] ArrowHelper
+  - [ ] AxesHelper
+  - [ ] BoxHelper
+  - [ ] Box3Helper
+  - [ ] CameraHelper
+  - [ ] DirectionalLightHelper
+  - [ ] GridHelper
+  - [ ] PolarGridHelper
+  - [ ] HemisphereLightHelper
+  - [ ] PlaneHelper
+  - [ ] PointLightHelper
+  - [ ] SkeletonHelper
+  - [ ] SpotLightHelper
+  - [ ] LightProbeHelper
+  - [ ] PositionalAudioHelper
+  - [ ] RectAreaLightHelper
+  - [ ] VertexNormalsHelper
+  - [ ] VertexTangentsHelper
 - Geometries
   - [x] BufferGeometry as Geometry.Buffer
   - [x] BoxGeometry as Geometry.Box
@@ -228,29 +268,28 @@ Progress:
   - [x] TorusKnotGeometry as Geometry.TorusKnot
   - [x] TubeGeometry as Geometry.Tube
   - [x] WireframeGeometry as Geometry.Wireframe
-- Controls
-  - [ ] ArcballControls
-  - [ ] DragControls
-  - [ ] FirstPersonControls
-  - [ ] FlyControls
-  - [x] OrbitControls as Controls.Orbit
-  - [ ] PointerLockControls
-  - [ ] TrackballControls
-  - [ ] TransformControls
-- Helpers
-  - [ ] ArrowHelper
-  - [ ] AxesHelper
-  - [ ] BoxHelper
-  - [ ] Box3Helper
-  - [ ] CameraHelper
-  - [ ] DirectionalLightHelper
-  - [ ] GridHelper
-  - [ ] PolarGridHelper
-  - [ ] HemisphereLightHelper
-  - [ ] PlaneHelper
-  - [ ] PointLightHelper
-  - [ ] SkeletonHelper
-  - [ ] SpotLightHelper
+  - [ ] ConvexGeometry
+  - [ ] DecalGeometry
+  - [ ] ParametricGeometry
+  - [ ] TextGeometry
+- Loaders
+  - [ ] 3DMLoader
+  - [ ] DRACOLoader
+  - [ ] FontLoader
+  - [ ] GLTFLoader
+  - [ ] KTX2Loader
+  - [ ] LDrawLoader
+  - [ ] MMDLoader
+  - [ ] MTLLoader
+  - [ ] OBJLoader
+  - [ ] PCDLoader
+  - [ ] PDBLoader
+  - [ ] PRWMLoader
+  - [ ] SVGLoader
+  - [ ] TGALoader
+- Post-Processing
+  - [ ] Lensflare
+  - [ ] EffectComposer
 - Lights
   - [x] AmbientLight as Light.Ambient
   - [ ] AmbientLightProbe
@@ -287,6 +326,22 @@ Progress:
   - [ ] ShadowMaterial
   - [ ] SpriteMaterial
 - Objects
+  - [ ] Bone
+  - [x] Group
+  - [ ] InstancedMesh
+  - [x] Line
+  - [ ] LineLoop
+  - [ ] LineSegments
+  - [ ] LOD
+  - [x] Mesh
+  - [ ] Points
+  - [ ] Skeleton
+  - [ ] SkinnedMesh
+  - [ ] Sprite
+- Scenes
+  - [ ] Fog
+  - [ ] FogExp2
+  - [x] Scene
 - Textures
 
   - [x] CanvasTexture as Texture.Canvas
@@ -301,9 +356,6 @@ Progress:
   - [ ] Source
   - [x] Texture as Texture.Default
   - [ ] VideoTexture
-- CSS3D
-  - [x] CSS3DObject
-  - [ ] CSS3DSprite
 
 - Additional Api
   - hooks
