@@ -96,7 +96,7 @@ const App => (
       <For each={colors}>
         {
           color => (
-            <Mesh ref={setMesh}>
+            <Mesh>
               <Geometry.Sphere/>
               <Material.Mesh.Basic color={new THREE.Color(color)}>
             </Mesh>
@@ -118,7 +118,7 @@ const App => (
   <Canvas>
     <Camera.Perspective active/> // set active-attribute for active camera
     <Camera.Orthogonal />
-    <Mesh ref={setMesh}>
+    <Mesh>
       <Geometry.Sphere/>
       <Material.Mesh.Basic/>
     </Mesh>
@@ -134,7 +134,7 @@ import {Canvas, Scene, Controls, Mesh, Material, Geometry, THREE} from 'solid-tr
 const App => (
   <Canvas>
     <Controls.Orbit active/>
-    <Mesh ref={setMesh}>
+    <Mesh>
       <Geometry.Sphere/>
       <Material.Mesh.Basic/>
     </Mesh>
