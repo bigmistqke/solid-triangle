@@ -11,16 +11,6 @@
 
 ## Quick start
 
-Install it:
-
-```bash
-npm i solid-triangle
-# or
-yarn add solid-triangle
-# or
-pnpm add solid-triangle
-```
-
 Use it:
 
 ### Simple example
