@@ -35,8 +35,6 @@ setInterval(() => setRotation(r => r + 0.01), 1000 / 60)
 
 const App => (
   <Canvas>
-    <Controls.Orbit active>
-    <Camera.Perspective position={{x: -5, y: 0, z: 0}} active>
     <Mesh>
       <Geometry.Sphere radius={0.5}>
       <Material.Mesh.Basic color={new THREE.Color('red')}>
@@ -58,7 +56,23 @@ setTimeout(() => {
 }, 1000)
 
 const App => (
+  <Canvas> // uses default camera and scene
+    <Mesh ref={setMesh}>
+      <Geometry.Sphere radius={0.5}>
+      <Material.Mesh.Basic color={new THREE.Color('red')}>
+    </Mesh>
+  </Canvas>
+)
+```
+
+### <Camera/>
+
+```tsx
+import {Canvas, Scene, Camera, Mesh, Material, Geometry, THREE} from 'solid-triangle'
+
+const App => (
   <Canvas>
+    <Camera.Perspective active/> // set active-attribute for active camera
     <Mesh ref={setMesh}>
       <Geometry.Sphere radius={0.5}>
       <Material.Mesh.Basic color={new THREE.Color('red')}>
@@ -72,14 +86,9 @@ const App => (
 ```tsx
 import {Canvas, Scene, Camera, Mesh, Material, Geometry} from 'solid-triangle'
 
-const [rotation, setRotation] = createSignal(0);
-setInterval(() => setRotation(r => r + 0.01), 1000 / 60)
-
 const App => (
   <Canvas>
-    <Controls.Orbit active>
-    <Camera.Perspective position={{x: -5, y: 0, z: 0}} active>
-    <Scene active>
+    <Scene active> // set active-attribute for active scene
       <Mesh rotation={{x: 0, y: 0, z: rotation()}}>
         <Geometry.Sphere radius={0.5}>
         <Material.Mesh.Basic color={new THREE.Color('red')}>
@@ -94,15 +103,11 @@ const App => (
 ```tsx
 import {Canvas, Scene, Camera, Mesh, Material, Geometry} from 'solid-triangle'
 
-// multiple scenes
-const [rotation, setRotation] = createSignal(0);
 const [activeSceneName, setActiveSceneName] = createSignal("first");
 const activeScene = createSelector(activeSceneName);
 
 const App => (
   <Canvas>
-    <Controls.Orbit active>
-    <Camera.Perspective active>
     <Scene active={activeScene("first")}>
       <Mesh>
         <Geometry.Sphere radius={0.5}>
@@ -124,16 +129,11 @@ const App => (
 ```tsx
 import {Canvas, Scene, Camera, Mesh, Material, Geometry, Selector} from 'solid-triangle'
 
-// multiple scenes using Selector
-const [rotation, setRotation] = createSignal(0);
 const [activeSceneName, setActiveSceneName] = createSignal("first");
-const activeScene = createSelector(activeSceneName);
 
 const App => (
   <Canvas>
-    <Controls.Orbit active>
-    <Camera.Perspective active>
-    <Selector.Scene id="first">
+    <Selector.Scene id={activeSceneName()}>
       <Scene id="first">
         <Mesh>
           <Geometry.Sphere radius={0.5}>
@@ -289,8 +289,8 @@ Progress:
 
 - Additional Api
   - hooks
-    - useTriangle for context-sharing
+    - useTriangle: hook for context-sharing
   - Additional Components
-    - Selector
+    - Selector: helper for scene/camera-management
       - Selector.Scene
       - Selector.Camera
