@@ -9,7 +9,7 @@
 !!WIP!!
 
 🔺 a threejs-renderer for solidjs 🔺 <br>
-🔥 by [@solid-primitives/jsxParser](https://github.com/solidjs-community/solid-primitives/pull/276) 🔥
+🔥 powered by [@solid-primitives/jsxParser](https://github.com/solidjs-community/solid-primitives/pull/276) 🔥
 
 ## Quick start
 
