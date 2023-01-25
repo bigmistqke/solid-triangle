@@ -118,7 +118,7 @@ import {Canvas, Camera, Mesh, Material, Geometry} from 'solid-triangle'
 
 const App => (
   <Canvas>
-    <Camera.Perspective active/> // set active-attribute for active camera
+    <Camera.Perspective active/>
     <Camera.Orthogonal />
     <Mesh>
       <Geometry.Sphere/>
@@ -136,6 +136,7 @@ import {Canvas, Controls, Mesh, Material, Geometry} from 'solid-triangle'
 const App => (
   <Canvas>
     <Controls.Orbit active/>
+    <Controls.Drag />
     <Mesh>
       <Geometry.Sphere/>
       <Material.Mesh.Basic/>
@@ -151,7 +152,7 @@ import {Canvas, Scene, Mesh, Material, Geometry} from 'solid-triangle'
 
 const App => (
   <Canvas>
-    <Scene active> // set active-attribute for active scene
+    <Scene active>
       <Mesh rotation={{x: 0, y: 0, z: rotation()}}>
         <Geometry.Sphere/>
         <Material.Mesh.Basic/>
