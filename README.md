@@ -43,7 +43,8 @@ const App => (
 ```tsx
 import {Canvas, Scene, Camera, Mesh, Material, Geometry} from 'solid-triangle'
 
-const [y, setY] = createSignal(0);
+const [y, setY] = createSignal(0)
+
 setInterval(() => setY(y => y + 1), 1000 / 30)
 const rotation = () => ({x: 0, y: rotation(), z: 0})
 
@@ -62,12 +63,12 @@ const App => (
 ```tsx
 import {Canvas, Scene, Camera, Mesh, Material, Geometry, THREE} from 'solid-triangle'
 
-const [mesh, setMesh] = createSignal<THREE.Mesh>();
+const [mesh, setMesh] = createSignal<THREE.Mesh>()
 
 setTimeout(() => {
   // do some imperative code
-  mesh()!.material.color = new THREE.Color('blue');
-  mesh()!.material.needsUpdate = true;
+  mesh()!.material.color = new THREE.Color('blue')
+  mesh()!.material.needsUpdate = true
 }, 1000)
 
 const App => (
@@ -85,10 +86,10 @@ const App => (
 ```tsx
 import {Canvas, Scene, Camera, Mesh, Material, Geometry, THREE} from 'solid-triangle'
 
-const [hidden, setHidden] = createSignal(true);
-const colors = ["red", "blue", "green"];
+const [hidden, setHidden] = createSignal(true)
+const colors = ["red", "blue", "green"]
 
-setTimeout(() => setHidden(false), 1000);
+setTimeout(() => setHidden(false), 1000)
 
 const App => (
   <Canvas>
@@ -104,7 +105,6 @@ const App => (
         }
       </For>
     </Show>
-
   </Canvas>
 )
 ```
@@ -164,8 +164,8 @@ const App => (
 ```tsx
 import {Canvas, Scene, Camera, Mesh, Material, Geometry} from 'solid-triangle'
 
-const [activeSceneName, setActiveSceneName] = createSignal("first");
-const activeScene = createSelector(activeSceneName);
+const [activeSceneName, setActiveSceneName] = createSignal("first")
+const activeScene = createSelector(activeSceneName)
 
 const App => (
   <Canvas>
@@ -190,7 +190,7 @@ const App => (
 ```tsx
 import {Canvas, Scene, Camera, Mesh, Material, Geometry, Selector} from 'solid-triangle'
 
-const [activeSceneName, setActiveSceneName] = createSignal("first");
+const [activeSceneName, setActiveSceneName] = createSignal("first")
 
 const App => (
   <Canvas>
