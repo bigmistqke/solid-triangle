@@ -26,7 +26,7 @@ Use it:
 ### Simple example
 
 ```tsx
-import {Canvas, Scene, Camera, Mesh, Material, Geometry} from 'solid-triangle'
+import {Canvas, Mesh, Material, Geometry} from 'solid-triangle'
 
 const App => (
   <Canvas>
@@ -41,7 +41,7 @@ const App => (
 ### Set/animate props
 
 ```tsx
-import {Canvas, Scene, Camera, Mesh, Material, Geometry} from 'solid-triangle'
+import {Canvas, Mesh, Material, Geometry} from 'solid-triangle'
 
 const [y, setY] = createSignal(0)
 
@@ -61,7 +61,7 @@ const App => (
 ### Ref-attribute: get THREE-instance
 
 ```tsx
-import {Canvas, Scene, Camera, Mesh, Material, Geometry, THREE} from 'solid-triangle'
+import {Canvas, Mesh, Material, Geometry, THREE} from 'solid-triangle'
 
 const [mesh, setMesh] = createSignal<THREE.Mesh>()
 
@@ -84,7 +84,7 @@ const App => (
 ### Use any of solid's flow-components: `<For/>`, `<Show/>`, ...
 
 ```tsx
-import {Canvas, Scene, Camera, Mesh, Material, Geometry, THREE} from 'solid-triangle'
+import {Canvas, Mesh, Material, Geometry, THREE} from 'solid-triangle'
 
 const [hidden, setHidden] = createSignal(true)
 const colors = ["red", "blue", "green"]
@@ -112,7 +112,7 @@ const App => (
 ### `<Camera/>`
 
 ```tsx
-import {Canvas, Scene, Camera, Mesh, Material, Geometry, THREE} from 'solid-triangle'
+import {Canvas, Camera, Mesh, Material, Geometry} from 'solid-triangle'
 
 const App => (
   <Canvas>
@@ -129,7 +129,7 @@ const App => (
 ### `<Controls/>`
 
 ```tsx
-import {Canvas, Scene, Controls, Mesh, Material, Geometry, THREE} from 'solid-triangle'
+import {Canvas, Controls, Mesh, Material, Geometry} from 'solid-triangle'
 
 const App => (
   <Canvas>
@@ -145,7 +145,7 @@ const App => (
 ### `<Scene/>`
 
 ```tsx
-import {Canvas, Scene, Camera, Mesh, Material, Geometry} from 'solid-triangle'
+import {Canvas, Scene, Mesh, Material, Geometry} from 'solid-triangle'
 
 const App => (
   <Canvas>
@@ -162,7 +162,7 @@ const App => (
 ### Multiple `<Scene/>` and `createSelector`
 
 ```tsx
-import {Canvas, Scene, Camera, Mesh, Material, Geometry} from 'solid-triangle'
+import {Canvas, Scene, Mesh, Material, Geometry} from 'solid-triangle'
 
 const [activeSceneName, setActiveSceneName] = createSignal("first")
 const activeScene = createSelector(activeSceneName)
@@ -188,7 +188,7 @@ const App => (
 ### Multiple `<Scene/>` and `<Selector.Scene>`
 
 ```tsx
-import {Canvas, Scene, Camera, Mesh, Material, Geometry, Selector} from 'solid-triangle'
+import {Canvas, Scene, Mesh, Material, Geometry, Selector} from 'solid-triangle'
 
 const [activeSceneName, setActiveSceneName] = createSignal("first")
 
