@@ -8,7 +8,7 @@
 
 !!WIP!!
 
-🔺 a threejs-renderer for solidjs 🔺
+🔺 a threejs-renderer for solidjs 🔺 <br>
 🔥 by [@solid-primitives/jsxParser](https://github.com/solidjs-community/solid-primitives/pull/276) 🔥
 
 ## Quick start
@@ -35,12 +35,9 @@ setInterval(() => setRotation(r => r + 0.01), 1000 / 60)
 const App => (
   <Canvas>
     <Controls.Orbit active>
-    <Camera.Perspective
-      position={{x: -5, y: 0, z: 0}}
-      active
-    >
+    <Camera.Perspective position={{x: -5, y: 0, z: 0}} active>
     <Scene active>
-      <Mesh radius={{x: 0, y: 0, z: rotation()}}>
+      <Mesh rotation={{x: 0, y: 0, z: rotation()}}>
         <Geometry.Sphere radius={0.5}>
         <Material.Mesh.Basic color={new THREE.Color('red')}>
       </Mesh>
@@ -61,15 +58,15 @@ const App => (
     <Controls.Orbit active>
     <Camera.Perspective active>
     <Scene active={activeScene("first")}>
-      <Mesh radius={{x: 0, y: 0, z: rotation()}}>
+      <Mesh>
         <Geometry.Sphere radius={0.5}>
         <Material.Mesh.Basic color={new THREE.Color('red')}>
       </Mesh>
     </Scene>
     <Scene active={activeScene("second")}>
-     <Mesh radius={{x: 0, y: 0, z: rotation()}}>
-       <Geometry.Sphere radius={0.5}>
-       <Material.Mesh.Basic color={new THREE.Color('red')}>
+     <Mesh>
+       <Geometry.Sphere radius={1}>
+       <Material.Mesh.Basic color={new THREE.Color('blue')}>
      </Mesh>
     </Scene>
   </Canvas>
@@ -90,15 +87,15 @@ const App => (
     <Camera.Perspective active>
     <Selector.Scene id="first">
       <Scene id="first">
-        <Mesh radius={{x: 0, y: 0, z: rotation()}}>
+        <Mesh>
           <Geometry.Sphere radius={0.5}>
           <Material.Mesh.Basic color={new THREE.Color('red')}>
         </Mesh>
       </Scene>
       <Scene id="second">
-       <Mesh radius={{x: 0, y: 0, z: rotation()}}>
-         <Geometry.Sphere radius={0.5}>
-         <Material.Mesh.Basic color={new THREE.Color('red')}>
+       <Mesh>
+         <Geometry.Sphere radius={1}>
+        <Material.Mesh.Basic color={new THREE.Color('blue')}>
        </Mesh>
       </Scene>
     </Selector>
