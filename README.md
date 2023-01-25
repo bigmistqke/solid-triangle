@@ -82,7 +82,9 @@ const App => (
 )
 ```
 
-### <Camera/>
+
+### `<Camera/>`
+
 
 ```tsx
 import {Canvas, Scene, Camera, Mesh, Material, Geometry, THREE} from 'solid-triangle'
@@ -90,6 +92,7 @@ import {Canvas, Scene, Camera, Mesh, Material, Geometry, THREE} from 'solid-tria
 const App => (
   <Canvas>
     <Camera.Perspective active/> // set active-attribute for active camera
+    <Camera.Orthogonal />
     <Mesh ref={setMesh}>
       <Geometry.Sphere radius={0.5}>
       <Material.Mesh.Basic color={new THREE.Color('red')}>
@@ -98,7 +101,7 @@ const App => (
 )
 ```
 
-### simple `<Scene/>`
+### `<Scene/>`
 
 ```tsx
 import {Canvas, Scene, Camera, Mesh, Material, Geometry} from 'solid-triangle'
@@ -115,7 +118,7 @@ const App => (
 )
 ```
 
-### scene-management with `createSelector`
+### multiple scenes and `createSelector`
 
 ```tsx
 import {Canvas, Scene, Camera, Mesh, Material, Geometry} from 'solid-triangle'
@@ -141,7 +144,7 @@ const App => (
 )
 ```
 
-### scene-management with `<Selector.Scene>`
+### multiple scenes and `<Selector.Scene>`
 
 ```tsx
 import {Canvas, Scene, Camera, Mesh, Material, Geometry, Selector} from 'solid-triangle'
