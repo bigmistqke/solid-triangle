@@ -2,14 +2,14 @@
   <img width="100%" src="https://assets.solidjs.com/banner?type=solid-triangle&background=tiles&project=%20" alt="solid-triangle">
 </p>
 
-# ▲ solid-triangle
+# 🔺 solid-triangle 🔺
 
 [![pnpm](https://img.shields.io/badge/maintained%20with-pnpm-cc00ff.svg?style=for-the-badge&logo=pnpm)](https://pnpm.io/)
 
 !!WIP!!
 
-a threejs-renderer for solidjs
-🔥 by [@solid-primitives/jsxParser](https://github.com/solidjs-community/solid-primitives/pull/276)
+🔺 a threejs-renderer for solidjs 🔺
+🔥 by [@solid-primitives/jsxParser](https://github.com/solidjs-community/solid-primitives/pull/276) 🔥
 
 ## Quick start
 
@@ -45,6 +45,63 @@ const App => (
         <Material.Mesh.Basic color={new THREE.Color('red')}>
       </Mesh>
     </Scene>
+  </Canvas>
+)```
+
+```tsx
+import {Canvas, Scene, Camera, Mesh, Material, Geometry} from 'solid-triangle'
+
+// multiple scenes
+const [rotation, setRotation] = createSignal(0);
+const [activeSceneName, setActiveSceneName] = createSignal("first");
+const activeScene = createSelector(activeSceneName);
+
+const App => (
+  <Canvas>
+    <Controls.Orbit active>
+    <Camera.Perspective active>
+    <Scene active={activeScene("first")}>
+      <Mesh radius={{x: 0, y: 0, z: rotation()}}>
+        <Geometry.Sphere radius={0.5}>
+        <Material.Mesh.Basic color={new THREE.Color('red')}>
+      </Mesh>
+    </Scene>
+    <Scene active={activeScene("second")}>
+     <Mesh radius={{x: 0, y: 0, z: rotation()}}>
+       <Geometry.Sphere radius={0.5}>
+       <Material.Mesh.Basic color={new THREE.Color('red')}>
+     </Mesh>
+    </Scene>
+  </Canvas>
+)
+```
+
+```tsx
+import {Canvas, Scene, Camera, Mesh, Material, Geometry, Selector} from 'solid-triangle'
+
+// multiple scenes using Selector
+const [rotation, setRotation] = createSignal(0);
+const [activeSceneName, setActiveSceneName] = createSignal("first");
+const activeScene = createSelector(activeSceneName);
+
+const App => (
+  <Canvas>
+    <Controls.Orbit active>
+    <Camera.Perspective active>
+    <Selector.Scene id="first">
+      <Scene id="first">
+        <Mesh radius={{x: 0, y: 0, z: rotation()}}>
+          <Geometry.Sphere radius={0.5}>
+          <Material.Mesh.Basic color={new THREE.Color('red')}>
+        </Mesh>
+      </Scene>
+      <Scene id="second">
+       <Mesh radius={{x: 0, y: 0, z: rotation()}}>
+         <Geometry.Sphere radius={0.5}>
+         <Material.Mesh.Basic color={new THREE.Color('red')}>
+       </Mesh>
+      </Scene>
+    </Selector>
   </Canvas>
 )
 ```
