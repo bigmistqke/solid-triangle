@@ -196,14 +196,14 @@ const App => (
   - [ ] Camera
   - [ ] CubeCamera
   - [ ] OrthographicCamera
-  - [x] PerspectiveCamera as `<Camera.Perspective/>`
+  - [x] PerspectiveCamera 👉 `<Camera.Perspective/>`
   - [ ] StereoCamera
 - Controls
   - [ ] ArcballControls
   - [ ] DragControls
   - [ ] FirstPersonControls
   - [ ] FlyControls
-  - [x] OrbitControls as `<Controls.Orbit/>`
+  - [x] OrbitControls 👉 `<Controls.Orbit/>`
   - [ ] PointerLockControls
   - [ ] TrackballControls
   - [ ] TransformControls
@@ -215,7 +215,7 @@ const App => (
   - [ ] CatmullRomCurve3
   - [ ] CubicBezierCurve
   - [ ] CubicBezierCurve3
-  - [x] EllipseCurve as `<Curve.Ellipse/>`
+  - [x] EllipseCurve 👉 `<Curve.Ellipse/>`
   - [ ] LineCurve
   - [ ] LineCurve3
   - [ ] QuadraticBezierCurve
@@ -247,28 +247,28 @@ const App => (
   - [ ] VertexNormalsHelper
   - [ ] VertexTangentsHelper
 - Geometries
-  - [x] BufferGeometry as `<Geometry.Buffer/>`
-  - [x] BoxGeometry as `<Geometry.Box/>`
-  - [x] CapsuleGeometry as `<Geometry.Capsule/>`
-  - [x] CircleGeometry as `<Geometry.Circle/>`
-  - [x] ConeGeometry as `<Geometry.Cone/>`
-  - [x] CylinderGeometry as `<Geometry.Cylinder/>`
-  - [x] DodecahedronGeometry as `<Geometry.Dodecahedron/>`
-  - [x] EdgesGeometry as `<Geometry.Edges/>`
-  - [x] ExtrudeGeometry as `<Geometry.Extrue/>`
-  - [x] IcosahedronGeometry as `<Geometry.Icosahedron/>`
-  - [x] LatheGeometry as `<Geometry.Lathe/>`
-  - [x] OctahedronGeometry as `<Geometry.Octahedron/>`
-  - [x] PlaneGeometry as `<Geometry.Plane/>`
-  - [x] PolyhedronGeometry as `<Geometry.Polyhedron/>`
-  - [x] RingGeometry as `<Geometry.Ring/>`
-  - [x] ShapeGeometry as `<Geometry.Shape/>`
-  - [x] SphereGeometry as `<Geometry.Sphere/>`
-  - [x] TetrahedronGeometry as `<Geometry.Tetrahedron/>`
-  - [x] TorusGeometry as `<Geometry.Torus/>`
-  - [x] TorusKnotGeometry as `<Geometry.TorusKnot/>`
-  - [x] TubeGeometry as `<Geometry.Tube/>`
-  - [x] WireframeGeometry as `<Geometry.Wireframe/>`
+  - [x] BufferGeometry 👉 `<Geometry.Buffer/>`
+  - [x] BoxGeometry 👉 `<Geometry.Box/>`
+  - [x] CapsuleGeometry 👉 `<Geometry.Capsule/>`
+  - [x] CircleGeometry 👉 `<Geometry.Circle/>`
+  - [x] ConeGeometry 👉 `<Geometry.Cone/>`
+  - [x] CylinderGeometry 👉 `<Geometry.Cylinder/>`
+  - [x] DodecahedronGeometry 👉 `<Geometry.Dodecahedron/>`
+  - [x] EdgesGeometry 👉 `<Geometry.Edges/>`
+  - [x] ExtrudeGeometry 👉 `<Geometry.Extrue/>`
+  - [x] IcosahedronGeometry 👉 `<Geometry.Icosahedron/>`
+  - [x] LatheGeometry 👉 `<Geometry.Lathe/>`
+  - [x] OctahedronGeometry 👉 `<Geometry.Octahedron/>`
+  - [x] PlaneGeometry 👉 `<Geometry.Plane/>`
+  - [x] PolyhedronGeometry 👉 `<Geometry.Polyhedron/>`
+  - [x] RingGeometry 👉 `<Geometry.Ring/>`
+  - [x] ShapeGeometry 👉 `<Geometry.Shape/>`
+  - [x] SphereGeometry 👉 `<Geometry.Sphere/>`
+  - [x] TetrahedronGeometry 👉 `<Geometry.Tetrahedron/>`
+  - [x] TorusGeometry 👉 `<Geometry.Torus/>`
+  - [x] TorusKnotGeometry 👉 `<Geometry.TorusKnot/>`
+  - [x] TubeGeometry 👉 `<Geometry.Tube/>`
+  - [x] WireframeGeometry 👉 `<Geometry.Wireframe/>`
   - [ ] ConvexGeometry
   - [ ] DecalGeometry
   - [ ] ParametricGeometry
@@ -292,38 +292,38 @@ const App => (
   - [ ] Lensflare
   - [ ] EffectComposer
 - Lights
-  - [x] AmbientLight as `<Light.Ambient/>`
+  - [x] AmbientLight 👉 `<Light.Ambient/>`
   - [ ] AmbientLightProbe
-  - [x] DirectionalLight as `<Light.Directional/>`
+  - [x] DirectionalLight 👉 `<Light.Directional/>`
   - [ ] HemisphereLight
-  - [ ] HemisphereLightProbe as `<Light./>`
+  - [ ] HemisphereLightProbe 👉 `<Light./>`
   - [ ] Light
   - [ ] LightProbe
-  - [x] PointLight as `<Light.Point/>`
-  - [x] RectAreaLight as `<Light.Rectarea/>`
-  - [x] SpotLight as `<Light.Spot/>`
+  - [x] PointLight 👉 `<Light.Point/>`
+  - [x] RectAreaLight 👉 `<Light.Rectarea/>`
+  - [x] SpotLight 👉 `<Light.Spot/>`
 - Lights/Shadow
   - [ ] LightShadow
   - [ ] PointLightShadow
   - [ ] DirectionalLightShadow
   - [ ] SpotLightShadow
 - Materials
-  - [x] LineBasicMaterial as `<Material.Line.Basic/>`
-  - [x] LineDashedMaterial as `<Material.Line.Dashed/>`
+  - [x] LineBasicMaterial 👉 `<Material.Line.Basic/>`
+  - [x] LineDashedMaterial 👉 `<Material.Line.Dashed/>`
   - [ ] Material
-  - [x] MeshBasicMaterial as `<Material.Mesh.Basic/>`
+  - [x] MeshBasicMaterial 👉 `<Material.Mesh.Basic/>`
   - [ ] MeshDepthMaterial
   - [ ] MeshDistanceMaterial
-  - [x] MeshLambertMaterial as `<Material.Mesh.Lambert/>`
-  - [x] MeshMatcapMaterial as `<Material.Mesh.Matcap/>`
-  - [x] MeshNormalMaterial as `<Material.Mesh.Normal/>`
-  - [x] MeshPhongMaterial as `<Material.Mesh.Phong/>`
-  - [x] MeshPhysicalMaterial as `<Material.Mesh.Physical/>`
-  - [x] MeshStandardMaterial as `<Material.Mesh.Standard/>`
-  - [ ] MeshToonMaterial as `<Material.Mesh./>`
-  - [ ] PointsMaterial as `<Material.Mesh./>`
-  - [ ] RawShaderMaterial as `<Material.Mesh./>`
-  - [x] ShaderMaterial as `<Material.Mesh.Shader/>`
+  - [x] MeshLambertMaterial 👉 `<Material.Mesh.Lambert/>`
+  - [x] MeshMatcapMaterial 👉 `<Material.Mesh.Matcap/>`
+  - [x] MeshNormalMaterial 👉 `<Material.Mesh.Normal/>`
+  - [x] MeshPhongMaterial 👉 `<Material.Mesh.Phong/>`
+  - [x] MeshPhysicalMaterial 👉 `<Material.Mesh.Physical/>`
+  - [x] MeshStandardMaterial 👉 `<Material.Mesh.Standard/>`
+  - [ ] MeshToonMaterial 👉 `<Material.Mesh./>`
+  - [ ] PointsMaterial 👉 `<Material.Mesh./>`
+  - [ ] RawShaderMaterial 👉 `<Material.Mesh./>`
+  - [x] ShaderMaterial 👉 `<Material.Mesh.Shader/>`
   - [ ] ShadowMaterial
   - [ ] SpriteMaterial
 - Objects
@@ -345,7 +345,7 @@ const App => (
   - [x] Scene
 - Textures
 
-  - [x] CanvasTexture as `<Texture.Canvas/>`
+  - [x] CanvasTexture 👉 `<Texture.Canvas/>`
   - [ ] CompressedTexture
   - [ ] CompressedArrayTexture
   - [ ] CubeTexture
@@ -355,7 +355,7 @@ const App => (
   - [ ] DepthTexture
   - [ ] FramebufferTexture
   - [ ] Source
-  - [x] Texture as `<Texture.Default/>`
+  - [x] Texture 👉 `<Texture.Default/>`
   - [ ] VideoTexture
 
 - Additional Api
