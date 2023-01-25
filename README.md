@@ -238,7 +238,7 @@ const App => (
   - [ ] ArrayCamera
   - [ ] Camera
   - [ ] CubeCamera
-  - [ ] OrthographicCamera
+  - [x] OrthographicCamera
   - [x] PerspectiveCamera 👉 `<Camera.Perspective/>`
   - [ ] StereoCamera
 - Controls
