@@ -80,6 +80,35 @@ const App => (
 )
 ```
 
+### use any of solid's flow-components: `<For/>`, `<Show/>`, ...
+
+```tsx
+import {Canvas, Scene, Camera, Mesh, Material, Geometry, THREE} from 'solid-triangle'
+
+const [hidden, setHidden] = createSignal(true);
+const colors = ["red", "blue", "green"];
+
+setTimeout(() => setHidden(false), 1000);
+
+const App => (
+  <Canvas>
+    <Show when={!hidden()}>
+      <For each={colors}>
+        {
+          color => (
+            <Mesh ref={setMesh}>
+              <Geometry.Sphere radius={0.5}>
+              <Material.Mesh.Basic color={new THREE.Color(color)}>
+            </Mesh>  
+          )
+        }
+      </For>
+    </Show>
+    
+  </Canvas>
+)
+```
+
 ### `<Camera/>`
 
 ```tsx
@@ -90,8 +119,24 @@ const App => (
     <Camera.Perspective active/> // set active-attribute for active camera
     <Camera.Orthogonal />
     <Mesh ref={setMesh}>
-      <Geometry.Sphere radius={0.5}>
-      <Material.Mesh.Basic color={new THREE.Color('red')}>
+      <Geometry.Sphere radius={0.5}/>
+      <Material.Mesh.Basic color={new THREE.Color('red')}/>
+    </Mesh>
+  </Canvas>
+)
+```
+
+### `<Controls/>`
+
+```tsx
+import {Canvas, Scene, Controls, Mesh, Material, Geometry, THREE} from 'solid-triangle'
+
+const App => (
+  <Canvas>
+    <Controls.Orbit active/>
+    <Mesh ref={setMesh}>
+      <Geometry.Sphere/>
+      <Material.Mesh.Basic/>
     </Mesh>
   </Canvas>
 )
