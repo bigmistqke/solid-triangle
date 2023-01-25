@@ -114,7 +114,7 @@ const App => (
 )
 ```
 
-### multiple scenes and `createSelector`
+### multiple `<Scene/>` and `createSelector`
 
 ```tsx
 import {Canvas, Scene, Camera, Mesh, Material, Geometry} from 'solid-triangle'
@@ -140,7 +140,7 @@ const App => (
 )
 ```
 
-### multiple scenes and `<Selector.Scene>`
+### multiple `<Scene/>` and `<Selector.Scene>`
 
 ```tsx
 import {Canvas, Scene, Camera, Mesh, Material, Geometry, Selector} from 'solid-triangle'
