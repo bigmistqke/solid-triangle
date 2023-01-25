@@ -23,7 +23,7 @@ pnpm add solid-triangle
 
 Use it:
 
-### simple example
+### Simple example
 
 ```tsx
 import {Canvas, Scene, Camera, Mesh, Material, Geometry} from 'solid-triangle'
@@ -38,7 +38,7 @@ const App => (
 )
 ```
 
-### set/animate props
+### Set/animate props
 
 ```tsx
 import {Canvas, Scene, Camera, Mesh, Material, Geometry} from 'solid-triangle'
@@ -58,7 +58,7 @@ const App => (
 )
 ```
 
-### ref-attribute, get THREE-instance
+### Ref-attribute: get THREE-instance
 
 ```tsx
 import {Canvas, Scene, Camera, Mesh, Material, Geometry, THREE} from 'solid-triangle'
@@ -81,7 +81,7 @@ const App => (
 )
 ```
 
-### use any of solid's flow-components: `<For/>`, `<Show/>`, ...
+### Use any of solid's flow-components: `<For/>`, `<Show/>`, ...
 
 ```tsx
 import {Canvas, Scene, Camera, Mesh, Material, Geometry, THREE} from 'solid-triangle'
@@ -159,7 +159,7 @@ const App => (
 )
 ```
 
-### multiple `<Scene/>` and `createSelector`
+### Multiple `<Scene/>` and `createSelector`
 
 ```tsx
 import {Canvas, Scene, Camera, Mesh, Material, Geometry} from 'solid-triangle'
@@ -185,7 +185,7 @@ const App => (
 )
 ```
 
-### multiple `<Scene/>` and `<Selector.Scene>`
+### Multiple `<Scene/>` and `<Selector.Scene>`
 
 ```tsx
 import {Canvas, Scene, Camera, Mesh, Material, Geometry, Selector} from 'solid-triangle'
