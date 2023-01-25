@@ -324,9 +324,6 @@ const App => (
   - [ ] PRWMLoader
   - [ ] SVGLoader
   - [ ] TGALoader
-- Post-Processing
-  - [ ] Lensflare
-  - [ ] EffectComposer
 - Lights
   - [x] AmbientLight 👉 `<Light.Ambient/>`
   - [ ] AmbientLightProbe
@@ -375,10 +372,88 @@ const App => (
   - [ ] Skeleton
   - [ ] SkinnedMesh
   - [ ] Sprite
+- Post-Processing
+  - [ ] Lensflare
+  - [ ] EffectComposer
+  - Pass
+    - [ ] RenderPass
+    - [ ] GlitchPass
+    - [ ] BokehPass
+    - [ ] OutlinePass
+    - [ ] ShaderPass
+    - [ ] SAOPass
+    - [ ] SMAAPass
+    - [ ] SSAARenderPass
+    - [ ] SSAOPass
+    - [ ] SSRPass
+    - [ ] GammaCorrectionShader
+    - [ ] ReflectorForSSRPass
+    - [ ] TAARenderPass
+    - [ ] UnrealBloomPass
+    - [ ] LUTPass
+    - [ ] BloomPass
+    - [ ] FilmPass
+    - [ ] DotScreenPass
+    - [ ] MaskPass, ClearMaskPass
+    - [ ] TexturePass
+    - [ ] CubeTexturePass
+    - [ ] ClearPass
 - Scenes
   - [ ] Fog
   - [ ] FogExp2
   - [x] Scene 👉 `<Scene/>`
+- Shaders
+  - [ ] ACESFilmicToneMappingShader
+  - [ ] AfterimageShader
+  - [ ] BasicShader
+  - [ ] BleachBypassShader
+  - [ ] BlendShader
+  - [ ] BokehShader
+  - [ ] BokehShader2
+  - [ ] BrightnessContrastShader
+  - [ ] ColorCorrectionShader
+  - [ ] ColorifyShader
+  - [ ] ConvolutionShader
+  - [ ] CopyShader
+  - [ ] DOFMipMapShader
+  - [ ] DepthLimitedBlurShader
+  - [ ] DigitalGlitch
+  - [ ] DotScreenShader
+  - [ ] FXAAShader
+  - [ ] FilmShader
+  - [ ] FocusShader
+  - [ ] FreiChenShader
+  - [ ] GammaCorrectionShader
+  - [ ] GodRaysShader
+  - [ ] HalftoneShader
+  - [ ] HorizontalBlurShader
+  - [ ] HorizontalTiltShiftShader
+  - [ ] HueSaturationShader
+  - [ ] KaleidoShader
+  - [ ] LuminosityHighPassShader
+  - [ ] LuminosityShader
+  - [ ] MMDToonShader
+  - [ ] MirrorShader
+  - [ ] NormalMapShader
+  - [ ] RGBShiftShader
+  - [ ] SAOShader
+  - [ ] SMAAShader
+  - [ ] SSAOShader
+  - [ ] SSRShader
+  - [ ] SepiaShader
+  - [ ] SobelOperatorShader
+  - [ ] SubsurfaceScatteringShader
+  - [ ] TechnicolorShader
+  - [ ] ToneMapShader
+  - [ ] ToonShader
+  - [ ] TriangleBlurShader
+  - [ ] UnpackDepthRGBAShader
+  - [ ] VelocityShader
+  - [ ] VerticalBlurShader
+  - [ ] VerticalTiltShiftShader
+  - [ ] VignetteShader
+  - [ ] VolumeShader
+  - [ ] WaterRefractionShader
 - Textures
 
   - [x] CanvasTexture 👉 `<Texture.Canvas/>`
