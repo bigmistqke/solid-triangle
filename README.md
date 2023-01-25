@@ -23,10 +23,10 @@ pnpm add solid-triangle
 
 Use it:
 
-### simple example
+### Simple example
 
 ```tsx
-import {Canvas, Scene, Camera, Mesh, Material, Geometry} from 'solid-triangle'
+import {Canvas, Mesh, Material, Geometry} from 'solid-triangle'
 
 const App => (
   <Canvas>
@@ -38,10 +38,10 @@ const App => (
 )
 ```
 
-### set/animate props
+### Set/animate props
 
 ```tsx
-import {Canvas, Scene, Camera, Mesh, Material, Geometry} from 'solid-triangle'
+import {Canvas, Mesh, Material, Geometry} from 'solid-triangle'
 
 const [y, setY] = createSignal(0)
 
@@ -58,17 +58,19 @@ const App => (
 )
 ```
 
-### ref-attribute, get THREE-instance
+### Ref-attribute: get THREE-instance
 
 ```tsx
-import {Canvas, Scene, Camera, Mesh, Material, Geometry, THREE} from 'solid-triangle'
+import {Canvas, Mesh, Material, Geometry, THREE} from 'solid-triangle'
 
 const [mesh, setMesh] = createSignal<THREE.Mesh>()
 
-setTimeout(() => {
+createEffect(() => {
+  const m = mesh();
+  if(!m) return;
   // do some imperative code
-  mesh()!.material.color = new THREE.Color('blue')
-  mesh()!.material.needsUpdate = true
+  m.material.color = new THREE.Color('blue')
+  m.material.needsUpdate = true
 }, 1000)
 
 const App => (
@@ -81,10 +83,10 @@ const App => (
 )
 ```
 
-### use any of solid's flow-components: `<For/>`, `<Show/>`, ...
+### Use any of solid's flow-components: `<For/>`, `<Show/>`, ...
 
 ```tsx
-import {Canvas, Scene, Camera, Mesh, Material, Geometry, THREE} from 'solid-triangle'
+import {Canvas, Mesh, Material, Geometry, THREE} from 'solid-triangle'
 
 const [hidden, setHidden] = createSignal(true)
 const colors = ["red", "blue", "green"]
@@ -112,11 +114,11 @@ const App => (
 ### `<Camera/>`
 
 ```tsx
-import {Canvas, Scene, Camera, Mesh, Material, Geometry, THREE} from 'solid-triangle'
+import {Canvas, Camera, Mesh, Material, Geometry} from 'solid-triangle'
 
 const App => (
   <Canvas>
-    <Camera.Perspective active/> // set active-attribute for active camera
+    <Camera.Perspective active/>
     <Camera.Orthogonal />
     <Mesh>
       <Geometry.Sphere/>
@@ -129,11 +131,12 @@ const App => (
 ### `<Controls/>`
 
 ```tsx
-import {Canvas, Scene, Controls, Mesh, Material, Geometry, THREE} from 'solid-triangle'
+import {Canvas, Controls, Mesh, Material, Geometry} from 'solid-triangle'
 
 const App => (
   <Canvas>
     <Controls.Orbit active/>
+    <Controls.Drag />
     <Mesh>
       <Geometry.Sphere/>
       <Material.Mesh.Basic/>
@@ -145,11 +148,11 @@ const App => (
 ### `<Scene/>`
 
 ```tsx
-import {Canvas, Scene, Camera, Mesh, Material, Geometry} from 'solid-triangle'
+import {Canvas, Scene, Mesh, Material, Geometry} from 'solid-triangle'
 
 const App => (
   <Canvas>
-    <Scene active> // set active-attribute for active scene
+    <Scene active>
       <Mesh rotation={{x: 0, y: 0, z: rotation()}}>
         <Geometry.Sphere/>
         <Material.Mesh.Basic/>
@@ -159,10 +162,10 @@ const App => (
 )
 ```
 
-### multiple `<Scene/>` and `createSelector`
+### Multiple `<Scene/>` and `createSelector`
 
 ```tsx
-import {Canvas, Scene, Camera, Mesh, Material, Geometry} from 'solid-triangle'
+import {Canvas, Scene, Mesh, Material, Geometry} from 'solid-triangle'
 
 const [activeSceneName, setActiveSceneName] = createSignal("first")
 const activeScene = createSelector(activeSceneName)
@@ -185,10 +188,10 @@ const App => (
 )
 ```
 
-### multiple `<Scene/>` and `<Selector.Scene>`
+### Multiple `<Scene/>` and `<Selector.Scene>`
 
 ```tsx
-import {Canvas, Scene, Camera, Mesh, Material, Geometry, Selector} from 'solid-triangle'
+import {Canvas, Scene, Mesh, Material, Geometry, Selector} from 'solid-triangle'
 
 const [activeSceneName, setActiveSceneName] = createSignal("first")
 
