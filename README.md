@@ -206,7 +206,7 @@ const App => (
   - [ ] TrackballControls
   - [ ] TransformControls
 - CSS3D
-  - [x] CSS3DObject
+  - [x] CSS3DObject 👉 `<CSS.Object/>`
   - [ ] CSS3DSprite
 - Curves
   - [ ] ArcCurve
@@ -326,13 +326,13 @@ const App => (
   - [ ] SpriteMaterial
 - Objects
   - [ ] Bone
-  - [x] Group
+  - [x] Group 👉 `<Group/>`
   - [ ] InstancedMesh
-  - [x] Line
+  - [x] Line 👉 `<Line/>`
   - [ ] LineLoop
   - [ ] LineSegments
   - [ ] LOD
-  - [x] Mesh
+  - [x] Mesh 👉 `<Mesh/>`
   - [ ] Points
   - [ ] Skeleton
   - [ ] SkinnedMesh
@@ -340,7 +340,7 @@ const App => (
 - Scenes
   - [ ] Fog
   - [ ] FogExp2
-  - [x] Scene
+  - [x] Scene 👉 `<Scene/>`
 - Textures
 
   - [x] CanvasTexture 👉 `<Texture.Canvas/>`
@@ -357,8 +357,11 @@ const App => (
   - [ ] VideoTexture
 
 - Additional Api
-  - hooks
-    - [x] useTriangle: hook for context-sharing
+  - context
+    - [x] `<Canvas/>` 
+      - root-component provides context
+    - [x] useTriangle
+       - all components inside `<Canvas/>` can `useTriangle()` to access state of `<Canvas/>`
   - Additional Components
     - Selector: helper for scene/camera-management
       - [x] Selector.Scene
