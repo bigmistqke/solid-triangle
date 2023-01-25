@@ -6,7 +6,10 @@
 
 [![pnpm](https://img.shields.io/badge/maintained%20with-pnpm-cc00ff.svg?style=for-the-badge&logo=pnpm)](https://pnpm.io/)
 
-a threejs wrapper for solidjs, powered by @solid-primitives/jsxParser (WIP)
+!!WIP!!
+
+a threejs-renderer for solidjs
+🔥 by [@solid-primitives/jsxParser](https://github.com/solidjs-community/solid-primitives/pull/276)
 
 ## Quick start
 
@@ -178,6 +181,9 @@ Progress:
   - [ ] Source
   - [x] Texture as Texture.Default
   - [ ] VideoTexture
+- CSS3D
+  - [x] CSS3DObject
+  - [ ] CSS3DSprite
 
 - Additional Api
   - hooks
@@ -185,12 +191,4 @@ Progress:
   - Additional Components
     - Selector
       - Selector.Scene
-
-```tsx
-<Selector id="1">
-  <Scene id="1">// visible</Scene>
-  <Scene id="2">// not visible</Scene>
-</Selector>
-```
-
       - Selector.Camera
