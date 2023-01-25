@@ -31,14 +31,14 @@ import {Canvas, Scene, Camera, Mesh, Material, Geometry} from 'solid-triangle'
 const App => (
   <Canvas>
     <Mesh>
-      <Geometry.Sphere radius={0.5}>
-      <Material.Mesh.Basic color={new THREE.Color('red')}>
+      <Geometry.Sphere/>
+      <Material.Mesh.Basic/>
     </Mesh>
   </Canvas>
 )
 ```
 
-### animate props
+### set/animate props
 
 ```tsx
 import {Canvas, Scene, Camera, Mesh, Material, Geometry} from 'solid-triangle'
@@ -50,8 +50,8 @@ const rotation = () => ({x: 0, y: rotation(), z: 0})
 const App => (
   <Canvas>
     <Mesh rotation={rotation()}>
-      <Geometry.Sphere radius={0.5}>
-      <Material.Mesh.Basic color={new THREE.Color('red')}>
+      <Geometry.Sphere radius={0.5}/>
+      <Material.Mesh.Basic color={new THREE.Color('red')} map="./test.jpg"/>
     </Mesh>
   </Canvas>
 )
@@ -73,8 +73,8 @@ setTimeout(() => {
 const App => (
   <Canvas> // uses default camera and scene
     <Mesh ref={setMesh}>
-      <Geometry.Sphere radius={0.5}>
-      <Material.Mesh.Basic color={new THREE.Color('red')}>
+      <Geometry.Sphere/>
+      <Material.Mesh.Basic/>
     </Mesh>
   </Canvas>
 )
@@ -97,14 +97,14 @@ const App => (
         {
           color => (
             <Mesh ref={setMesh}>
-              <Geometry.Sphere radius={0.5}>
+              <Geometry.Sphere/>
               <Material.Mesh.Basic color={new THREE.Color(color)}>
-            </Mesh>  
+            </Mesh>
           )
         }
       </For>
     </Show>
-    
+
   </Canvas>
 )
 ```
@@ -119,8 +119,8 @@ const App => (
     <Camera.Perspective active/> // set active-attribute for active camera
     <Camera.Orthogonal />
     <Mesh ref={setMesh}>
-      <Geometry.Sphere radius={0.5}/>
-      <Material.Mesh.Basic color={new THREE.Color('red')}/>
+      <Geometry.Sphere/>
+      <Material.Mesh.Basic/>
     </Mesh>
   </Canvas>
 )
@@ -151,8 +151,8 @@ const App => (
   <Canvas>
     <Scene active> // set active-attribute for active scene
       <Mesh rotation={{x: 0, y: 0, z: rotation()}}>
-        <Geometry.Sphere radius={0.5}>
-        <Material.Mesh.Basic color={new THREE.Color('red')}>
+        <Geometry.Sphere/>
+        <Material.Mesh.Basic/>
       </Mesh>
     </Scene>
   </Canvas>
@@ -171,14 +171,14 @@ const App => (
   <Canvas>
     <Scene active={activeScene("first")}>
       <Mesh>
-        <Geometry.Sphere radius={0.5}>
-        <Material.Mesh.Basic color={new THREE.Color('red')}>
+        <Geometry.Sphere/>
+        <Material.Mesh.Basic/>
       </Mesh>
     </Scene>
     <Scene active={activeScene("second")}>
      <Mesh>
-       <Geometry.Sphere radius={1}>
-       <Material.Mesh.Basic color={new THREE.Color('blue')}>
+       <Geometry.Box />
+       <Material.Mesh.Basic color={new THREE.Color('blue')}/>
      </Mesh>
     </Scene>
   </Canvas>
@@ -197,14 +197,14 @@ const App => (
     <Selector.Scene id={activeSceneName()}>
       <Scene id="first">
         <Mesh>
-          <Geometry.Sphere radius={0.5}>
-          <Material.Mesh.Basic color={new THREE.Color('red')}>
+          <Geometry.Sphere/>
+          <Material.Mesh.Basic/>
         </Mesh>
       </Scene>
       <Scene id="second">
        <Mesh>
-         <Geometry.Sphere radius={1}>
-        <Material.Mesh.Basic color={new THREE.Color('blue')}>
+          <Geometry.Box />
+          <Material.Mesh.Basic color={new THREE.Color('blue')}/>
        </Mesh>
       </Scene>
     </Selector>
@@ -403,10 +403,10 @@ const App => (
 
 - Additional Api
   - context
-    - [x] `<Canvas/>` 
+    - [x] `<Canvas/>`
       - root-component provides context
     - [x] useTriangle
-       - all components inside `<Canvas/>` can `useTriangle()` to access state of `<Canvas/>`
+      - all components inside `<Canvas/>` can `useTriangle()` to access state of `<Canvas/>`
   - Additional Components
     - Selector: helper for scene/camera-management
       - [x] Selector.Scene
