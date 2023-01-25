@@ -30,12 +30,28 @@ Use it:
 ```tsx
 import {Canvas, Scene, Camera, Mesh, Material, Geometry} from 'solid-triangle'
 
-const [rotation, setRotation] = createSignal(0);
-setInterval(() => setRotation(r => r + 0.01), 1000 / 60)
-
 const App => (
   <Canvas>
     <Mesh>
+      <Geometry.Sphere radius={0.5}>
+      <Material.Mesh.Basic color={new THREE.Color('red')}>
+    </Mesh>
+  </Canvas>
+)
+```
+
+### animate props
+
+```tsx
+import {Canvas, Scene, Camera, Mesh, Material, Geometry} from 'solid-triangle'
+
+const [y, setY] = createSignal(0);
+setInterval(() => setY(y => y + 1), 1000 / 30)
+const rotation = () => ({x: 0, y: rotation(), z: 0})
+
+const App => (
+  <Canvas>
+    <Mesh rotation={rotation()}>
       <Geometry.Sphere radius={0.5}>
       <Material.Mesh.Basic color={new THREE.Color('red')}>
     </Mesh>
@@ -51,6 +67,7 @@ import {Canvas, Scene, Camera, Mesh, Material, Geometry, THREE} from 'solid-tria
 const [mesh, setMesh] = createSignal<THREE.Mesh>();
 
 setTimeout(() => {
+  // do some imperative code
   mesh()!.material.color = new THREE.Color('blue');  
   mesh()!.material.needsUpdate = true;
 }, 1000)
@@ -269,6 +286,7 @@ Progress:
   - [x] ShaderMaterial as Material.Mesh.Shader
   - [ ] ShadowMaterial
   - [ ] SpriteMaterial
+- Objects
 - Textures
 
   - [x] CanvasTexture as Texture.Canvas
@@ -289,8 +307,11 @@ Progress:
 
 - Additional Api
   - hooks
-    - useTriangle: hook for context-sharing
+    - [x] useTriangle: hook for context-sharing
   - Additional Components
     - Selector: helper for scene/camera-management
-      - Selector.Scene
-      - Selector.Camera
+      - [x] Selector.Scene
+      - [x] Selector.Camera
+  - mouse-events for all Object3D
+    - [ ] onmouseover
+    - [ ] onmousedown
