@@ -171,7 +171,7 @@ const App => (
 )
 ```
 
-API-coverage:
+## API-coverage:
 
 - Animation
   - [ ] AnimationAction
@@ -370,3 +370,4 @@ API-coverage:
   - mouse-events for all Object3D
     - [ ] onmouseover
     - [ ] onmousedown
+  - [ ] control over what gets pre-loaded
