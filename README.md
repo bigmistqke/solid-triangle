@@ -30,7 +30,48 @@ Use it:
 ```tsx
 import {Canvas, Scene, Camera, Mesh, Material, Geometry} from 'solid-triangle'
 
-// simple example
+const [rotation, setRotation] = createSignal(0);
+setInterval(() => setRotation(r => r + 0.01), 1000 / 60)
+
+const App => (
+  <Canvas>
+    <Controls.Orbit active>
+    <Camera.Perspective position={{x: -5, y: 0, z: 0}} active>
+    <Mesh>
+      <Geometry.Sphere radius={0.5}>
+      <Material.Mesh.Basic color={new THREE.Color('red')}>
+    </Mesh>
+  </Canvas>
+)
+```
+
+### ref-attribute, get THREE-instance
+
+```tsx
+import {Canvas, Scene, Camera, Mesh, Material, Geometry, THREE} from 'solid-triangle'
+
+const [mesh, setMesh] = createSignal<THREE.Mesh>();
+
+setTimeout(() => {
+  mesh()!.material.color = new THREE.Color('blue');  
+  mesh()!.material.needsUpdate = true;
+}, 1000)
+
+const App => (
+  <Canvas>
+    <Mesh ref={setMesh}>
+      <Geometry.Sphere radius={0.5}>
+      <Material.Mesh.Basic color={new THREE.Color('red')}>
+    </Mesh>
+  </Canvas>
+)
+```
+
+### simple `<Scene/>`
+
+```tsx
+import {Canvas, Scene, Camera, Mesh, Material, Geometry} from 'solid-triangle'
+
 const [rotation, setRotation] = createSignal(0);
 setInterval(() => setRotation(r => r + 0.01), 1000 / 60)
 
