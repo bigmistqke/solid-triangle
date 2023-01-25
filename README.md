@@ -65,10 +65,12 @@ import {Canvas, Mesh, Material, Geometry, THREE} from 'solid-triangle'
 
 const [mesh, setMesh] = createSignal<THREE.Mesh>()
 
-setTimeout(() => {
+createEffect(() => {
+  const m = mesh();
+  if(!m) return;
   // do some imperative code
-  mesh()!.material.color = new THREE.Color('blue')
-  mesh()!.material.needsUpdate = true
+  m.material.color = new THREE.Color('blue')
+  m.material.needsUpdate = true
 }, 1000)
 
 const App => (
