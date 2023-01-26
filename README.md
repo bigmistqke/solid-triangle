@@ -358,7 +358,7 @@ const App => (
   - [x] RectAreaLight 👉 `<Light.Rectarea/>`
   - [x] SpotLight 👉 `<Light.Spot/>`
 - LightProbes
-- [x] AmbientLight 👉 `<Light.Ambient/>`
+  - [x] AmbientLight 👉 `<Light.Ambient/>`
   - [x] AmbientLightProbe 👉 `<LightProbe.Ambient/>`
   - [x] HemisphereLightProbe 👉 `<LightProbe.Hemisphere/>`
   - [x] LightProbe 👉 `<LightProbe.Default/>`
