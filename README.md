@@ -230,8 +230,8 @@ const App => (
 - Camera
   - [ ] ArrayCamera
   - [ ] Camera
-  - [ ] CubeCamera
-  - [x] OrthographicCamera
+  - [x] CubeCamera 👉 `<Camera.Cube/>`
+  - [x] OrthographicCamera 👉 `<Camera.Perspective/>`
   - [x] PerspectiveCamera 👉 `<Camera.Perspective/>`
   - [ ] StereoCamera
 - Controls
@@ -329,7 +329,7 @@ const App => (
   - [ ] AmbientLightProbe
   - [x] DirectionalLight 👉 `<Light.Directional/>`
   - [ ] HemisphereLight
-  - [ ] HemisphereLightProbe 👉 `<Light./>`
+  - [ ] HemisphereLightProbe
   - [ ] Light
   - [ ] LightProbe
   - [x] PointLight 👉 `<Light.Point/>`
@@ -353,9 +353,9 @@ const App => (
   - [x] MeshPhongMaterial 👉 `<Material.Mesh.Phong/>`
   - [x] MeshPhysicalMaterial 👉 `<Material.Mesh.Physical/>`
   - [x] MeshStandardMaterial 👉 `<Material.Mesh.Standard/>`
-  - [ ] MeshToonMaterial 👉 `<Material.Mesh./>`
-  - [ ] PointsMaterial 👉 `<Material.Mesh./>`
-  - [ ] RawShaderMaterial 👉 `<Material.Mesh./>`
+  - [ ] MeshToonMaterial 
+  - [ ] PointsMaterial
+  - [ ] RawShaderMaterial
   - [x] ShaderMaterial 👉 `<Material.Mesh.Shader/>`
   - [ ] ShadowMaterial
   - [ ] SpriteMaterial
