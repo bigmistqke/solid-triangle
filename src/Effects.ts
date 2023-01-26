@@ -1,50 +1,69 @@
 import { Accessor, createEffect, onCleanup } from 'solid-js'
 import * as THREE from 'three'
-import { Euler, Light, Object3D, Vector3 } from 'three'
-import { TokenTextures } from './components/Textures.types'
-import { TokenMaterials } from './components/Materials.types'
-import { ThreeToken, isToken } from './ParserFunctions'
-import mapTokens from './lib/mapTokens'
+import { Light, Object3D } from 'three'
 import { XYZ } from './BaseTypes'
+import { TokenHelpers } from './components/Helpers.types'
+import { TokenMaterials } from './components/Materials.types'
+import { TokenObject3Ds } from './components/Object3D.types'
+import { TokenTextures } from './components/Textures.types'
+import mapTokens from './lib/mapTokens'
+import { isToken, ThreeToken } from './ParserFunctions'
 
-export const createChildrenEffect = (object: THREE.Object3D, tokens: Accessor<ThreeToken[]>) => {
+export const createChildrenEffect = (
+  object: THREE.Object3D | Accessor<THREE.Object3D>,
+  tokens: Accessor<ThreeToken[]>,
+) => {
+  const o = () => (typeof object === 'function' ? object() : object)
   mapTokens(tokens, token => {
     if (token.type === 'Object3D' || token.type === 'Light' || token.type === 'CSS') {
       const element = token.three
-      object.add(element)
-
-      onCleanup(() => object.remove(element))
+      o().add(element)
+      onCleanup(() => o().remove(element))
     } else if (token.type === 'Modifier') {
       const element = token.three.object3D
-      object.add(element)
-      onCleanup(() => object.remove(element))
+      o().add(element)
+      onCleanup(() => o().remove(element))
     }
   })
 }
 
 export const createTransformEffect = (
-  object: Object3D,
+  object: Object3D | Accessor<Object3D>,
   props: { rotation?: XYZ; position?: XYZ; scale?: XYZ },
 ) => {
-  if (object.type === 'PerspectiveCamera') {
-    /*  createEffect(() => {
+  const o = () => (typeof object === 'function' ? object() : object)
 
+  createEffect(() => (o().rotation.x = props.rotation?.x || 0))
+  createEffect(() => (o().rotation.y = props.rotation?.y || 0))
+  createEffect(() => (o().rotation.z = props.rotation?.z || 0))
 
-    }); */
-  }
-  createEffect(() => (object.rotation.x = props.rotation?.x || 0))
-  createEffect(() => (object.rotation.y = props.rotation?.y || 0))
-  createEffect(() => (object.rotation.z = props.rotation?.z || 0))
+  // createEffect(() => (props.position ? o().position.copy(props.position) : undefined))
 
-  createEffect(() => (props.position ? object.position.copy(props.position) : undefined))
+  createEffect(() => (o().position.x = props.position?.x || 0))
+  createEffect(() => (o().position.y = props.position?.y || 0))
+  createEffect(() => (o().position.z = props.position?.z || 0))
 
-  createEffect(() => (object.position.x = props.position?.x || 0))
-  createEffect(() => (object.position.y = props.position?.y || 0))
-  createEffect(() => (object.position.z = props.position?.z || 0))
+  createEffect(() => (o().scale.x = props.scale?.x || 1))
+  createEffect(() => (o().scale.y = props.scale?.y || 1))
+  createEffect(() => (o().scale.z = props.scale?.z || 1))
+}
 
-  createEffect(() => (object.scale.x = props.scale?.x || 1))
-  createEffect(() => (object.scale.y = props.scale?.y || 1))
-  createEffect(() => (object.scale.z = props.scale?.z || 1))
+export const createObject3DEffect = <
+  TToken extends TokenObject3Ds | TokenHelpers,
+  TThree extends TToken['three'],
+  TProps extends TToken['props'],
+>(
+  three: TThree,
+  props: TProps,
+  tokens: Accessor<ThreeToken[]>,
+) => {
+  const t = () => (typeof three === 'function' ? three() : three)
+  // set ref
+  createRefEffect(three, props)
+  // grouping elements
+  createChildrenEffect(three, tokens)
+  // transform Object3D
+  createTransformEffect(three, props)
 }
 
 export const createLightEffect = (
@@ -67,17 +86,25 @@ export const createPropsEffect = <TToken extends ThreeToken>(
   props: TToken['props'],
   ignore?: string[],
 ) => {
+  console.log('createPropsEffect', three, props)
   const propKeys = Object.keys(props) as (keyof TToken['props'])[]
   propKeys.forEach(propKey => {
     if (ignore && typeof propKey === 'string' && ignore.includes(propKey)) return
     if (propKey === 'children') return
-    if (!(propKey in props && propKey in three)) return
+    /* if (
+      (typeof three === 'function' && three() && propKey in three()) ||
+      (typeof three !== 'function' && three && propKey in three)
+    )
+     return */
+
     createEffect(() => {
       if (!props[propKey]) return
       if (typeof props[propKey] === 'function') {
-        // three[propKey] = props[propKey]();
+        if (typeof three === 'function' && three()) three()[propKey] = props[propKey]()
+        else three[propKey] = props[propKey]()
       } else {
-        three[propKey] = props[propKey]
+        if (typeof three === 'function' && three()) three()[propKey] = props[propKey]
+        else three[propKey] = props[propKey]
       }
     })
   })
@@ -117,10 +144,24 @@ export const createMapEffect = <TToken extends TokenMaterials>(
   })
 }
 
-export const createRefEffect = <TToken extends ThreeToken>(
-  three: Partial<TToken['three']>,
-  props: TToken['props'],
-) => createEffect(() => three && props.ref?.(three as any))
+export const createRefEffect = <
+  TToken extends ThreeToken,
+  TThree extends TToken['three'],
+  TProps extends TToken['props'],
+>(
+  three: TThree,
+  props: TProps,
+) => {
+  const t = () => (typeof three === 'function' ? three() : three)
+  // TODO: type-error: ref is undefined in some TProps?
+  createEffect(() => {
+    if (!('ref' in props)) {
+      console.error('ref is undefined in ', three, props)
+      return
+    }
+    t() && props.ref?.(t())
+  })
+}
 
 export const createNeedsUpdateEffect = <TToken extends TokenMaterials | TokenTextures>(
   three: TToken['three'],

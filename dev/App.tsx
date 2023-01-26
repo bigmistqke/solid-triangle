@@ -1,19 +1,9 @@
-import {
-  Component,
-  createEffect,
-  createSelector,
-  createSignal,
-  For,
-  Index,
-  onCleanup,
-  Show,
-} from 'solid-js'
-import { XYZ } from '../src/BaseTypes'
+import { Component, createEffect, createSelector, createSignal, For, Index, Show } from 'solid-js'
 import * as THREE from 'three'
 import {
   AnimationSet,
+  Camera,
   Canvas,
-  CanvasText,
   Controls,
   CSS,
   Geometry,
@@ -21,10 +11,10 @@ import {
   Material,
   Mesh,
   Scene,
-  Camera,
-  tween,
   Selector,
+  tween,
 } from '../src'
+import { XYZ } from '../src/BaseTypes'
 import Planet from './Planet'
 
 import shuffle from './utils/shuffle'
@@ -151,9 +141,9 @@ const App: Component = () => {
 
   // onCleanup(() => AnimationSet.delete(animate));
 
-  const title = CanvasText('Cyberspatial Research Group', 'black', 'helvetica', 1200)
+  /*   const title = CanvasText('Cyberspatial Research Group', 'black', 'helvetica', 1200)
   title.magFilter = THREE.NearestMipMapNearestFilter
-  title.minFilter = THREE.LinearMipMapLinearFilter
+  title.minFilter = THREE.LinearMipMapLinearFilter */
 
   const [projects, setProjects] = createSignal(
     shuffle([
@@ -334,7 +324,6 @@ const App: Component = () => {
             far={10000}
           />
           <Selector.Scene id={activeScene()}>
-            <Planets projects={projects()} />
             <Scene id="intro">
               <Group
                 rotation={new THREE.Euler(0, 0, Math.random() - 0.5)}

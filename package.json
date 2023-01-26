@@ -76,6 +76,7 @@
   ],
   "packageManager": "pnpm@7.22.0",
   "dependencies": {
-    "three": "^0.148.0"
+    "three": "^0.149.0",
+    "three-stdlib": "^2.21.6"
   }
 }

@@ -22,7 +22,7 @@ export const AnimationSet: Set<() => void> = new Set()
 
 type CanvasProps = NestedFromInstance<HTMLCanvasElement> & {
   onraycast?: (intersects: Intersection<Object3D<Event>>[]) => void
-  camera?: Camera
+  camera?: THREE.PerspectiveCamera | THREE.OrthographicCamera
 }
 
 export default (props: CanvasProps) => {
@@ -49,8 +49,10 @@ export default (props: CanvasProps) => {
       _setScene(newScene)
     }
   }
-  const [camera, _setCamera] = createSignal(props.camera ?? new PerspectiveCamera())
-  const setCamera = (newCamera: Camera | undefined) => {
+  const [camera, _setCamera] = createSignal<THREE.PerspectiveCamera | THREE.OrthographicCamera>(
+    props.camera ?? new PerspectiveCamera(),
+  )
+  const setCamera = (newCamera: THREE.PerspectiveCamera | THREE.OrthographicCamera | undefined) => {
     if (!newCamera) _setCamera(new PerspectiveCamera())
     else {
       _setCamera(newCamera)

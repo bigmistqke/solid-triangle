@@ -11,8 +11,7 @@ import type { TokenHelpers } from './components/Helpers.types'
 import { TokenCSSs } from './components/CSS.types'
 import { TokenHtml } from './components/Html.types'
 import { TokenControls } from './components/Controls.types'
-const x: ThreeToken
-x.props.ref
+
 export type ThreeToken =
   | TokenObject3Ds
   | TokenMaterials
@@ -22,7 +21,7 @@ export type ThreeToken =
   | TokenCurves
   | TokenModifiers
   | TokenCameras
-  // | TokenHelpers
+  | TokenHelpers
   | TokenCSSs
   | TokenHtml
   | TokenControls
