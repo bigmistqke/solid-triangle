@@ -12,12 +12,11 @@
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "noPropertyAccessFromIndexSignature": true,
     "noUncheckedIndexedAccess": true,
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
     "types": [],
     "baseUrl": "."
   },
-  "exclude": ["node_modules", "dist", "./dev"]
+  "exclude": ["node_modules", "dist", "../backup/dev"]
 }

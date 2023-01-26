@@ -3,5 +3,5 @@
   "compilerOptions": {
     "types": ["vite/client"]
   },
-  "include": ["./**/*", "../src/components/HtmlFiber.tsx"]
+  "exclude": ["node_modules", "dist"]
 }
