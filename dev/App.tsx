@@ -9,6 +9,7 @@ import {
   Geometry,
   Group,
   Helper,
+  Light,
   Material,
   Mesh,
   Scene,
@@ -39,20 +40,48 @@ const Planets = (props: { projects: any[] }) => {
 
   const rand = Math.random()
 
+  const [axis, setAxis] = createSignal(Math.sin(performance.now()))
+  AnimationSet.add(() => {
+    setAxis(performance.now() / 1000)
+  })
+  const position = () => ({ x: Math.cos(axis()) * 1.5, y: Math.sin(axis()) * 1.5, z: 0 })
+
+  const [light, setLight] = createSignal<THREE.PointLight>()
+
+  createEffect(() => console.log('LIGHT IS ', light()))
+
   return (
     <Scene id="planets">
       <Helper.Grid position={{ x: 0, y: -2, z: 0 }} />
       <Helper.Axes position={{ x: 0, y: -2, z: 0 }} />
       <Helper.PolarGrid position={{ x: 0, y: 1, z: 0 }} />
       <Helper.Box color={new THREE.Color('red')} object={mesh()!} position={{ x: 0, y: 1, z: 0 }} />
+      <Show when={light()}>
+        <Helper.PointLight
+          sphereSize={light()?.distance || 1}
+          light={light()}
+          color={new THREE.Color('red')}
+        />
+      </Show>
       {/* <Helper.Plane plane={plane()} /> */}
-
+      <Light.Point
+        ref={light => {
+          console.log('light ref', light)
+          setLight(light)
+        }}
+        position={position()}
+        intensity={10}
+        distance={2}
+      />
       <Mesh ref={setMesh}>
-        <Geometry.Sphere />
-        <Material.Mesh.Basic />
+        <Geometry.Sphere radius={0.5} />
+        <Material.Mesh.Physical color={new THREE.Color('blue')} roughness={0.2} />
       </Mesh>
-
-      <Group
+      {/* <Mesh position={position()}>
+        <Geometry.Sphere radius={0.25} />
+        <Material.Mesh.Phong color={new THREE.Color('blue')} />
+      </Mesh> */}
+      {/* <Group
         rotation={new THREE.Euler(0, 0, Math.random() - 0.5)}
         position={new THREE.Vector3(0, -0.5, 3)}
       >
@@ -102,7 +131,7 @@ const Planets = (props: { projects: any[] }) => {
             Cyberspatial Research Center
           </div>
         </div>
-      </CSS.Object>
+      </CSS.Object> */}
     </Scene>
   )
 }
