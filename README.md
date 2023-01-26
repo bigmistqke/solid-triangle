@@ -201,7 +201,7 @@ const App => (
           <Material.Mesh.Basic color={new THREE.Color('blue')}/>
        </Mesh>
       </Scene>
-    </Selector>
+    </Selector.Scene>
   </Canvas>
 )
 ```
