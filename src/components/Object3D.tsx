@@ -3,14 +3,30 @@ import * as THREE from 'three'
 import { childrenTokens, createToken } from '../ParserFunctions'
 import { createChildrenEffect, createPropsEffect, createTransformEffect } from '../Effects'
 import type {
+  PropsBone,
   PropsGroup,
   PropsLine,
+  PropsLineLoop,
+  PropsLineSegments,
+  PropsLOD,
   PropsMesh,
+  PropsPoints,
   PropsScene,
+  PropsSkeleton,
+  PropsSkinnedMesh,
+  PropsSprite,
+  TokenBone,
   TokenGroup,
   TokenLine,
+  TokenLineLoop,
+  TokenLineSegments,
+  TokenLOD,
   TokenMesh,
+  TokenPoints,
   TokenScene,
+  TokenSkeleton,
+  TokenSkinnedMesh,
+  TokenSprite,
 } from './Object3D.types'
 import { useTriangle } from '../'
 
