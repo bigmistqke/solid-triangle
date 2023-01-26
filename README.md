@@ -269,17 +269,19 @@ const App => (
 - CSS3D
   - [x] CSS3DObject 👉 `<CSS.Object/>`
   - [ ] CSS3DSprite
-- Curves
+- Curve
   - [ ] ArcCurve
-  - [x] CatmullRomCurve3 👉 `<Curve3.CatmullRom/>`
   - [ ] CubicBezierCurve
-  - [x] CubicBezierCurve3 👉 `<Curve3.Ellipse/>`
   - [x] EllipseCurve 👉 `<Curve.Ellipse/>`
   - [ ] LineCurve
-  - [x] LineCurve3 👉 `<Curve3.Line/>`
   - [ ] QuadraticBezierCurve
-  - [x] QuadraticBezierCurve3 👉 `<Curve3.QuadraticBezier/>`
   - [ ] SplineCurve
+- Curve3
+  - [x] CatmullRomCurve3 👉 `<Curve3.CatmullRom/>`
+  - [x] CubicBezierCurve3 👉 `<Curve3.Ellipse/>`
+  - [x] EllipseCurve 👉 `<Curve.Ellipse/>`
+  - [x] LineCurve3 👉 `<Curve3.Line/>`
+  - [x] QuadraticBezierCurve3 👉 `<Curve3.QuadraticBezier/>`
 - Exporter
   - [ ] ColladaExporter
   - [ ] EXRExporter
