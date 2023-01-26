@@ -86,11 +86,15 @@ export const createLightEffect = (
   createEffect(() => (props.shadow ? (light.shadow = props.shadow) : undefined))
 }
 
+const IGNORE = ['position', 'scale', 'rotation', 'ref']
+
 export const createPropsEffect = <TToken extends ThreeToken>(
   three: TToken['three'],
   props: TToken['props'],
   ignore?: string[],
 ) => {
+  ignore = ignore ? [...ignore, ...IGNORE] : [...IGNORE]
+
   const propKeys = Object.keys(props) as (keyof TToken['props'])[]
   propKeys.forEach(propKey => {
     if (ignore && typeof propKey === 'string' && ignore.includes(propKey)) return
@@ -160,9 +164,9 @@ export const createRefEffect = <
 ) => {
   const t = () => (typeof three === 'function' ? three() : three)
   createEffect(() => {
-    if (!('ref' in props)) return
+    if (!('ref' in props) || !t()) return
     // TODO: ugly typecast
-    t() && props.ref?.(t() as any)
+    props.ref?.(t() as any)
   })
 }
 
