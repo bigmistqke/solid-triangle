@@ -9,7 +9,7 @@ import { Curve, Curve3 } from './components/Curves'
 import { Helper } from './components/Helpers'
 
 import { Geometry } from './components/Geometries'
-import { Light } from './components/Lights'
+import { Light, LightProbe } from './components/Lights'
 import { Material } from './components/Materials'
 import { Group, Line, Mesh, Scene } from './components/Object3D'
 import Selector from './components/Selector'
@@ -69,6 +69,7 @@ export {
   Geometry,
   Material,
   Light,
+  LightProbe,
   Texture,
   Camera,
   Curve,

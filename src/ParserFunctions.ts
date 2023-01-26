@@ -1,6 +1,6 @@
 import { createJSXParser } from './lib/Parser'
 import type { TokenGeometries } from './components/Geometries.types'
-import type { TokenLights } from './components/Lights.types'
+import type { TokenLightProbes, TokenLights } from './components/Lights.types'
 import type { TokenMaterials } from './components/Materials.types'
 import type { TokenTextures } from './components/Textures.types'
 import type { TokenObject3Ds } from './components/Object3D.types'
@@ -17,6 +17,7 @@ export type ThreeToken =
   | TokenMaterials
   | TokenGeometries
   | TokenLights
+  | TokenLightProbes
   | TokenTextures
   | TokenCurves
   | TokenCurves3

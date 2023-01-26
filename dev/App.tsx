@@ -56,14 +56,11 @@ const Planets = (props: { projects: any[] }) => {
       <Helper.Axes position={{ x: 0, y: -2, z: 0 }} />
       <Helper.PolarGrid position={{ x: 0, y: 1, z: 0 }} />
       <Helper.Box color={new THREE.Color('red')} object={mesh()!} position={{ x: 0, y: 1, z: 0 }} />
-      <Show when={light()}>
-        <Helper.PointLight
-          sphereSize={light()?.distance || 1}
-          light={light()}
-          color={new THREE.Color('red')}
-        />
-      </Show>
-      {/* <Helper.Plane plane={plane()} /> */}
+      <Helper.PointLight
+        sphereSize={light()?.distance || 1}
+        light={light()}
+        color={new THREE.Color('red')}
+      />
       <Light.Point
         ref={light => {
           console.log('light ref', light)
