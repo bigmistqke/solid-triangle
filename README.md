@@ -301,6 +301,7 @@ const App => (
   - [x] PointLightHelper 👉 `<Helper.PointLight />`
   - [x] SkeletonHelper 👉 `<Helper.Skeleton />`
   - [x] SpotLightHelper 👉 `<Helper.SpotLight />`
+- Examples/Helpers
   - [x] LightProbeHelper 👉 `<Helper.LightProbe />`
   - [x] PositionalAudioHelper 👉 `<Helper.PositionalAudio />`
   - [x] RectAreaLightHelper 👉 `<Helper.RectAreaLight />`
