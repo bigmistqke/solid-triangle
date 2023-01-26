@@ -370,22 +370,22 @@ const App => (
 - Materials
   - [x] LineBasicMaterial 👉 `<Material.Line.Basic/>`
   - [x] LineDashedMaterial 👉 `<Material.Line.Dashed/>`
-  - [ ] Material
+  - [x] Material 👉 `<Material.Default/>`
   - [x] MeshBasicMaterial 👉 `<Material.Mesh.Basic/>`
-  - [ ] MeshDepthMaterial
-  - [ ] MeshDistanceMaterial
+  - [x] MeshDepthMaterial 👉 `<Material.Mesh.Depth/>`
+  - [x] MeshDistanceMaterial 👉 `<Material.Mesh.Distance/>`
   - [x] MeshLambertMaterial 👉 `<Material.Mesh.Lambert/>`
   - [x] MeshMatcapMaterial 👉 `<Material.Mesh.Matcap/>`
   - [x] MeshNormalMaterial 👉 `<Material.Mesh.Normal/>`
   - [x] MeshPhongMaterial 👉 `<Material.Mesh.Phong/>`
   - [x] MeshPhysicalMaterial 👉 `<Material.Mesh.Physical/>`
   - [x] MeshStandardMaterial 👉 `<Material.Mesh.Standard/>`
-  - [ ] MeshToonMaterial
-  - [ ] PointsMaterial
-  - [ ] RawShaderMaterial
+  - [x] MeshToonMaterial 👉 `<Material.Mesh.Toon/>`
+  - [x] PointsMaterial 👉 `<Material.Points/>`
+  - [x] RawShaderMaterial 👉 `<Material.RawShader/>`
   - [x] ShaderMaterial 👉 `<Material.Shader/>`
-  - [ ] ShadowMaterial
-  - [ ] SpriteMaterial
+  - [x] ShadowMaterial 👉 `<Material.Shadow/>`
+  - [x] SpriteMaterial 👉 `<Material.Sprite/>`
 - Objects
   - [ ] Bone
   - [x] Group 👉 `<Group/>`

@@ -39,6 +39,10 @@ import type {
   TokenShadowMaterial,
   PropsSpriteMaterial,
   TokenSpriteMaterial,
+  PropsMaterial,
+  PropsRawShaderMaterial,
+  TokenMaterial,
+  TokenRawShaderMaterial,
 } from './Materials.types'
 import { createToken } from '../ParserFunctions'
 import { mergeProps } from 'solid-js'
@@ -346,6 +350,28 @@ const Sprite = createToken<PropsSpriteMaterial, TokenSpriteMaterial>(props => {
   }
 })
 
+const RawShader = createToken<PropsRawShaderMaterial, TokenRawShaderMaterial>(props => {
+  const three = new THREE.RawShaderMaterial()
+  createMaterialEffect(three, props)
+  return {
+    props,
+    id: 'RawShaderMaterial',
+    type: 'Material',
+    three,
+  }
+})
+
+const Default = createToken<PropsMaterial, TokenMaterial>(props => {
+  const three = new THREE.Material()
+  createMaterialEffect(three, props)
+  return {
+    props,
+    id: 'Material',
+    type: 'Material',
+    three,
+  }
+})
+
 export const Material = {
   Mesh,
   Shader,
@@ -353,4 +379,6 @@ export const Material = {
   Points,
   Shadow,
   Sprite,
+  Default,
+  RawShader,
 }

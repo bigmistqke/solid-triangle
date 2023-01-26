@@ -4,6 +4,14 @@ import { NestedFromClassAndInstance, NestedFromInstance, XYZ } from '../BaseType
 
 type Material<T> = NestedFromInstance<T>
 
+export type PropsMaterial = Material<THREE.Material>
+export type TokenMaterial = {
+  id: 'Material'
+  type: 'Material'
+  three: THREE.Material
+  props: PropsMaterial
+}
+
 export type PropsMeshNormalMaterial =
   | Material<THREE.MeshNormalMaterial> & {
       bumpMap?: JSX.Element
@@ -199,6 +207,14 @@ export type TokenShaderMaterial = {
   props: PropsShaderMaterial
 }
 
+export type PropsRawShaderMaterial = Material<THREE.RawShaderMaterial>
+export type TokenRawShaderMaterial = {
+  id: 'RawShaderMaterial'
+  type: 'Material'
+  three: THREE.RawShaderMaterial
+  props: PropsRawShaderMaterial
+}
+
 export type PropsLineBasicMaterial = Material<THREE.LineBasicMaterial>
 export type TokenLineBasicMaterial = {
   id: 'LineBasicMaterial'
@@ -240,6 +256,7 @@ export type TokenSpriteMaterial = {
 }
 
 export type TokenMaterials =
+  | TokenMaterial
   | TokenMeshBasicMaterial
   | TokenMeshPhysicalMaterial
   | TokenMeshStandardMaterial
@@ -252,6 +269,7 @@ export type TokenMaterials =
   | TokenMeshToonMaterial
   // shader
   | TokenShaderMaterial
+  | TokenRawShaderMaterial
   // line
   | TokenLineBasicMaterial
   | TokenLineDashedMaterial
