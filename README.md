@@ -381,7 +381,7 @@ const App => (
   - [ ] MeshToonMaterial
   - [ ] PointsMaterial
   - [ ] RawShaderMaterial
-  - [x] ShaderMaterial 👉 `<Material.Mesh.Shader/>`
+  - [x] ShaderMaterial 👉 `<Material.Shader/>`
   - [ ] ShadowMaterial
   - [ ] SpriteMaterial
 - Objects
