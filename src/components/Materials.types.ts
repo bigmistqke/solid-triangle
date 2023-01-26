@@ -1,5 +1,6 @@
 import { JSX } from 'solid-js/jsx-runtime'
-import { NestedFromInstance } from '../BaseTypes'
+import THREE from 'three'
+import { NestedFromClassAndInstance, NestedFromInstance, XYZ } from '../BaseTypes'
 
 type Material<T> = NestedFromInstance<T>
 
@@ -135,6 +136,61 @@ export type TokenMeshPhysicalMaterial = {
   props: PropsMeshPhysicalMaterial
 }
 
+export type PropsMeshDepthMaterial =
+  | Material<THREE.MeshDepthMaterial>
+  | {
+      alphaMap?: JSX.Element
+      depthPacking?: JSX.Element
+      displacementMap?: JSX.Element
+      displacementScale?: JSX.Element
+      displacementBias?: JSX.Element
+      fog?: JSX.Element
+      map?: JSX.Element
+      wireframe?: JSX.Element
+      wireframeLinewidth?: JSX.Element
+    }
+export type TokenMeshDepthMaterial = {
+  id: 'MeshDepthMaterial'
+  type: 'Material'
+  three: THREE.MeshDepthMaterial
+  props: PropsMeshDepthMaterial
+}
+
+export type PropsMeshDistanceMaterial =
+  | Material<THREE.MeshDistanceMaterial>
+  | {
+      alphaMap?: JSX.Element
+      displacementMap?: JSX.Element
+      displacementScale?: XYZ
+      map?: JSX.Element
+    }
+export type TokenMeshDistanceMaterial = {
+  id: 'MeshDistanceMaterial'
+  type: 'Material'
+  three: THREE.MeshDistanceMaterial
+  props: PropsMeshDistanceMaterial
+}
+
+export type PropsMeshToonMaterial =
+  | Material<THREE.MeshToonMaterial>
+  | {
+      alphaMap?: JSX.Element
+      aoMap?: JSX.Element
+      displacementMap?: JSX.Element
+      bumpMap?: JSX.Element
+      emissiveMap?: JSX.Element
+      gradientMap?: JSX.Element
+      lightMap?: JSX.Element
+      normalMap?: JSX.Element
+      map?: JSX.Element
+    }
+export type TokenMeshToonMaterial = {
+  id: 'MeshToonMaterial'
+  type: 'Material'
+  three: THREE.MeshToonMaterial
+  props: PropsMeshToonMaterial
+}
+
 export type PropsShaderMaterial = Material<THREE.ShaderMaterial>
 export type TokenShaderMaterial = {
   id: 'ShaderMaterial'
@@ -159,6 +215,30 @@ export type TokenLineDashedMaterial = {
   props: PropsLineDashedMaterial
 }
 
+export type PropsPointsMaterial = Material<THREE.PointsMaterial>
+export type TokenPointsMaterial = {
+  id: 'PointsMaterial'
+  type: 'Material'
+  three: THREE.PointsMaterial
+  props: PropsPointsMaterial
+}
+
+export type PropsShadowMaterial = Material<THREE.ShadowMaterial>
+export type TokenShadowMaterial = {
+  id: 'ShadowMaterial'
+  type: 'Material'
+  three: THREE.ShadowMaterial
+  props: PropsShadowMaterial
+}
+
+export type PropsSpriteMaterial = Material<THREE.SpriteMaterial>
+export type TokenSpriteMaterial = {
+  id: 'SpriteMaterial'
+  type: 'Material'
+  three: THREE.SpriteMaterial
+  props: PropsSpriteMaterial
+}
+
 export type TokenMaterials =
   | TokenMeshBasicMaterial
   | TokenMeshPhysicalMaterial
@@ -167,6 +247,15 @@ export type TokenMaterials =
   | TokenMeshMatcapMaterial
   | TokenMeshLambertMaterial
   | TokenMeshNormalMaterial
+  | TokenMeshDepthMaterial
+  | TokenMeshDistanceMaterial
+  | TokenMeshToonMaterial
+  // shader
   | TokenShaderMaterial
+  // line
   | TokenLineBasicMaterial
   | TokenLineDashedMaterial
+  //
+  | TokenPointsMaterial
+  | TokenShadowMaterial
+  | TokenSpriteMaterial

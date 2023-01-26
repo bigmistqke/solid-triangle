@@ -27,6 +27,18 @@ import type {
   TokenLineBasicMaterial,
   PropsLineDashedMaterial,
   TokenLineDashedMaterial,
+  PropsMeshDepthMaterial,
+  TokenMeshDepthMaterial,
+  PropsMeshDistanceMaterial,
+  TokenMeshDistanceMaterial,
+  PropsMeshToonMaterial,
+  TokenMeshToonMaterial,
+  PropsPointsMaterial,
+  TokenPointsMaterial,
+  PropsShadowMaterial,
+  TokenShadowMaterial,
+  PropsSpriteMaterial,
+  TokenSpriteMaterial,
 } from './Materials.types'
 import { createToken } from '../ParserFunctions'
 import { mergeProps } from 'solid-js'
@@ -82,6 +94,8 @@ const Mesh = {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const three = new THREE.MeshLambertMaterial({ ...props })
+
+    console.log('Lambert is ', three)
     createMaterialEffect(three, props)
     createMapEffect<TokenMeshLambertMaterial>(three, props, [
       'alphaMap',
@@ -183,6 +197,59 @@ const Mesh = {
       three,
     }
   }),
+  Depth: createToken<PropsMeshDepthMaterial, TokenMeshDepthMaterial>(props => {
+    const three = new THREE.MeshDepthMaterial()
+    createMaterialEffect(three, props)
+    createMapEffect<TokenMeshDepthMaterial>(three, props, [
+      'alphaMap',
+      'depthPacking',
+      'displacementMap',
+      'displacementScale',
+      'displacementBias',
+      'fog',
+      'map',
+      'wireframe',
+      'wireframeLinewidth',
+    ])
+    return {
+      props,
+      id: 'MeshDepthMaterial',
+      type: 'Material',
+      three,
+    }
+  }),
+  Distance: createToken<PropsMeshDistanceMaterial, TokenMeshDistanceMaterial>(props => {
+    const three = new THREE.MeshDistanceMaterial()
+    createMaterialEffect(three, props)
+    createMapEffect<TokenMeshDistanceMaterial>(three, props, ['alphaMap', 'displacementMap', 'map'])
+    return {
+      props,
+      id: 'MeshDistanceMaterial',
+      type: 'Material',
+      three,
+    }
+  }),
+  Toon: createToken<PropsMeshToonMaterial, TokenMeshToonMaterial>(props => {
+    const three = new THREE.MeshToonMaterial()
+    createMaterialEffect(three, props)
+    createMapEffect<TokenMeshToonMaterial>(three, props, [
+      'alphaMap',
+      'aoMap',
+      'displacementMap',
+      'bumpMap',
+      'emissiveMap',
+      'gradientMap',
+      'lightMap',
+      'normalMap',
+      'map',
+    ])
+    return {
+      props,
+      id: 'MeshToonMaterial',
+      type: 'Material',
+      three,
+    }
+  }),
 }
 
 const Line = {
@@ -244,8 +311,46 @@ const Shader = createToken<PropsShaderMaterial, TokenShaderMaterial>(props => {
   }
 })
 
+const Points = createToken<PropsPointsMaterial, TokenPointsMaterial>(props => {
+  const three = new THREE.PointsMaterial()
+  createMaterialEffect(three, props)
+  createMapEffect<TokenPointsMaterial>(three, props, ['alphaMap', 'map'])
+  return {
+    props,
+    id: 'PointsMaterial',
+    type: 'Material',
+    three,
+  }
+})
+
+const Shadow = createToken<PropsShadowMaterial, TokenShadowMaterial>(props => {
+  const three = new THREE.ShadowMaterial()
+  createMaterialEffect(three, props)
+  return {
+    props,
+    id: 'ShadowMaterial',
+    type: 'Material',
+    three,
+  }
+})
+
+const Sprite = createToken<PropsSpriteMaterial, TokenSpriteMaterial>(props => {
+  const three = new THREE.SpriteMaterial()
+  createMaterialEffect(three, props)
+  createMapEffect<TokenSpriteMaterial>(three, props, ['alphaMap', 'map'])
+  return {
+    props,
+    id: 'SpriteMaterial',
+    type: 'Material',
+    three,
+  }
+})
+
 export const Material = {
   Mesh,
   Shader,
   Line,
+  Points,
+  Shadow,
+  Sprite,
 }
