@@ -351,15 +351,17 @@ const App => (
   - [ ] TGALoader
 - Lights
   - [x] AmbientLight 👉 `<Light.Ambient/>`
-  - [x] AmbientLightProbe 👉 `<LightProbe.Ambient/>`
   - [x] DirectionalLight 👉 `<Light.Directional/>`
   - [x] HemisphereLight 👉 `<Light.Hemisphere/>`
-  - [x] HemisphereLightProbe 👉 `<LightProbe.Hemisphere/>`
   - [x] Light 👉 `<Light.Default/>`
-  - [x] LightProbe 👉 `<LightProbe.Default/>`
   - [x] PointLight 👉 `<Light.Point/>`
   - [x] RectAreaLight 👉 `<Light.Rectarea/>`
   - [x] SpotLight 👉 `<Light.Spot/>`
+- LightProbes
+- [x] AmbientLight 👉 `<Light.Ambient/>`
+  - [x] AmbientLightProbe 👉 `<LightProbe.Ambient/>`
+  - [x] HemisphereLightProbe 👉 `<LightProbe.Hemisphere/>`
+  - [x] LightProbe 👉 `<LightProbe.Default/>`
 - Lights/Shadow
   - [ ] LightShadow
   - [ ] PointLightShadow
