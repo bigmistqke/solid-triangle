@@ -151,7 +151,7 @@ const App: Component = () => {
         title: 'the dating project',
         image: [''],
       },
-      {
+      /* {
         title: 'dvrsm.com',
         image: ['./assets/dvrsm.png'],
       },
@@ -230,7 +230,7 @@ const App: Component = () => {
       {
         title: 'designers without borders',
         image: [''],
-      },
+      }, */
     ]),
   )
 
@@ -245,9 +245,9 @@ const App: Component = () => {
 
   createEffect(() => console.log('mainCamera', mainCamera()))
 
-  const [activeScene, setActiveScene] = createSignal('intro')
+  const [activeScene, setActiveScene] = createSignal('planets')
 
-  setTimeout(() => setActiveScene('planets'), 1000)
+  // setTimeout(() => setActiveScene('planets'), 1000)
   return (
     <>
       <div
@@ -324,6 +324,7 @@ const App: Component = () => {
             far={10000}
           />
           <Selector.Scene id={activeScene()}>
+            <Planets projects={projects()} />
             <Scene id="intro">
               <Group
                 rotation={new THREE.Euler(0, 0, Math.random() - 0.5)}

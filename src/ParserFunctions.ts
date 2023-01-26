@@ -4,7 +4,7 @@ import type { TokenLights } from './components/Lights.types'
 import type { TokenMaterials } from './components/Materials.types'
 import type { TokenTextures } from './components/Textures.types'
 import type { TokenObject3Ds } from './components/Object3D.types'
-import type { TokenCurves } from './components/Curves.types'
+import type { TokenCurves, TokenCurves3 } from './components/Curves.types'
 import type { TokenModifiers } from './components/Modifiers.types'
 import { TokenCameras } from './components/Cameras.types'
 import type { TokenHelpers } from './components/Helpers.types'
@@ -19,6 +19,7 @@ export type ThreeToken =
   | TokenLights
   | TokenTextures
   | TokenCurves
+  | TokenCurves3
   | TokenModifiers
   | TokenCameras
   | TokenHelpers

@@ -413,7 +413,7 @@ export const BufferGeometry = createToken<PropsBufferGeometry, TokenBufferGeomet
     if (props.points) {
       if (typeof props.points === 'function') {
         const token = isToken(props.points)
-        if (token && token.type === 'Curve') {
+        if (token && (token.type === 'Curve' || token.type === 'Curve3')) {
           return new THREE.BufferGeometry().setFromPoints(token.points())
         } else {
           console.error(

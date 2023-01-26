@@ -13,6 +13,7 @@ import {
 } from 'three-stdlib'
 
 type ControlType<T> = NestedFromInstance<T> & {
+  active: boolean
   renderer?: THREE.Renderer
   camera?: THREE.PerspectiveCamera | THREE.OrthographicCamera
 }

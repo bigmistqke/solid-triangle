@@ -271,14 +271,14 @@ const App => (
   - [ ] CSS3DSprite
 - Curves
   - [ ] ArcCurve
-  - [ ] CatmullRomCurve3
+  - [x] CatmullRomCurve3 👉 `<Curve3.CatmullRom/>`
   - [ ] CubicBezierCurve
-  - [ ] CubicBezierCurve3
+  - [x] CubicBezierCurve3 👉 `<Curve3.Ellipse/>`
   - [x] EllipseCurve 👉 `<Curve.Ellipse/>`
   - [ ] LineCurve
-  - [ ] LineCurve3
+  - [x] LineCurve3 👉 `<Curve3.Line/>`
   - [ ] QuadraticBezierCurve
-  - [ ] QuadraticBezierCurve3
+  - [x] QuadraticBezierCurve3 👉 `<Curve3.QuadraticBezier/>`
   - [ ] SplineCurve
 - Exporter
   - [ ] ColladaExporter

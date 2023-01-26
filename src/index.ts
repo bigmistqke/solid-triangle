@@ -5,7 +5,7 @@ import { Camera } from './components/Cameras'
 import Canvas, { AnimationSet } from './components/Canvas'
 import { Controls } from './components/Controls'
 import { CSS } from './components/CSS'
-import { Curve } from './components/Curves'
+import { Curve, Curve3 } from './components/Curves'
 import { Geometry } from './components/Geometries'
 import { Light } from './components/Lights'
 import { Material } from './components/Materials'
@@ -56,6 +56,8 @@ export const ThreeContext = createContext<{
 
 export const useTriangle = () => useContext(ThreeContext)
 
+window.THREE = THREE
+
 export {
   Canvas,
   Group,
@@ -68,6 +70,7 @@ export {
   Texture,
   Camera,
   Curve,
+  Curve3,
   tween,
   CSS,
   Controls,

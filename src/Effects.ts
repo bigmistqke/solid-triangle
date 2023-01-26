@@ -135,8 +135,10 @@ export const createMapEffect = <TToken extends TokenMaterials>(
     createEffect(() => {
       const prop = props[mapKey]
       if (!(mapKey in three)) return
+      // TODO: type-error
       const map = getTextureFromProps(prop)
       if (map) {
+        // TODO: type-error
         three[mapKey] = map
         three.needsUpdate = true
       }
@@ -153,13 +155,10 @@ export const createRefEffect = <
   props: TProps,
 ) => {
   const t = () => (typeof three === 'function' ? three() : three)
-  // TODO: type-error: ref is undefined in some TProps?
   createEffect(() => {
-    if (!('ref' in props)) {
-      console.error('ref is undefined in ', three, props)
-      return
-    }
-    t() && props.ref?.(t())
+    if (!('ref' in props)) return
+    // TODO: ugly typecast
+    t() && props.ref?.(t() as any)
   })
 }
 
@@ -167,5 +166,7 @@ export const createNeedsUpdateEffect = <TToken extends TokenMaterials | TokenTex
   three: TToken['three'],
   props: TToken['props'],
 ) => {
-  createEffect(() => (props.needsUpdate ? (three.needsUpdate = true) : null))
+  createEffect(() =>
+    'needsUpdate' in props && 'needsUpdate' in three ? (three.needsUpdate = true) : null,
+  )
 }
