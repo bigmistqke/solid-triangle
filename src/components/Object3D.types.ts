@@ -33,9 +33,124 @@ export type PropsScene =
     }
 export type TokenScene = {
   id: 'Scene'
-  type: 'Scene'
+  type: 'Object3D'
   three: THREE.Scene
   props: PropsScene
 }
 
-export type TokenObject3Ds = TokenGroup | TokenMesh | TokenLine | TokenScene
+export type PropsPoints =
+  | Omit<NestedFromInstance<THREE.Points>, 'id'> & {
+      active?: boolean
+      id: string | number
+      children: JSXElement | JSXElement[]
+    }
+export type TokenPoints = {
+  id: 'Points'
+  type: 'Object3D'
+  three: THREE.Points
+  props: PropsPoints
+}
+
+export type PropsBone =
+  | Omit<NestedFromInstance<THREE.Bone>, 'id'> & {
+      active?: boolean
+      id: string | number
+      children: JSXElement | JSXElement[]
+    }
+export type TokenBone = {
+  id: 'Bone'
+  type: 'Object3D'
+  three: THREE.Bone
+  props: PropsBone
+}
+
+export type PropsSkeleton =
+  | Omit<NestedFromInstance<THREE.Skeleton>, 'id'> & {
+      active?: boolean
+      id: string | number
+      children: JSXElement | JSXElement[]
+    }
+export type TokenSkeleton = {
+  id: 'Skeleton'
+  type: 'Object3D'
+  three: THREE.Skeleton
+  props: PropsSkeleton
+}
+
+export type PropsLineLoop =
+  | Omit<NestedFromInstance<THREE.LineLoop>, 'id'> & {
+      active?: boolean
+      id: string | number
+      children: JSXElement | JSXElement[]
+    }
+export type TokenLineLoop = {
+  id: 'LineLoop'
+  type: 'Object3D'
+  three: THREE.LineLoop
+  props: PropsLineLoop
+}
+
+export type PropsLineSegments =
+  | Omit<NestedFromInstance<THREE.LineSegments>, 'id'> & {
+      active?: boolean
+      id: string | number
+      children: JSXElement | JSXElement[]
+    }
+export type TokenLineSegments = {
+  id: 'LineSegments'
+  type: 'Object3D'
+  three: THREE.LineSegments
+  props: PropsLineSegments
+}
+
+export type PropsSkinnedMesh =
+  | Omit<NestedFromInstance<THREE.SkinnedMesh>, 'id'> & {
+      active?: boolean
+      id: string | number
+      children: JSXElement | JSXElement[]
+    }
+export type TokenSkinnedMesh = {
+  id: 'SkinnedMesh'
+  type: 'Object3D'
+  three: THREE.SkinnedMesh
+  props: PropsSkinnedMesh
+}
+
+export type PropsLOD =
+  | Omit<NestedFromInstance<THREE.LOD>, 'id'> & {
+      active?: boolean
+      id: string | number
+      children: JSXElement | JSXElement[]
+    }
+export type TokenLOD = {
+  id: 'LOD'
+  type: 'Object3D'
+  three: THREE.LOD
+  props: PropsLOD
+}
+
+export type PropsSprite =
+  | Omit<NestedFromInstance<THREE.Sprite>, 'id'> & {
+      active?: boolean
+      id: string | number
+      children: JSXElement | JSXElement[]
+    }
+export type TokenSprite = {
+  id: 'Sprite'
+  type: 'Object3D'
+  three: THREE.Sprite
+  props: PropsSprite
+}
+
+export type TokenObject3Ds =
+  | TokenGroup
+  | TokenMesh
+  | TokenLine
+  | TokenScene
+  | TokenBone
+  | TokenLineLoop
+  | TokenLineSegments
+  | TokenPoints
+  | TokenSkeleton
+  | TokenSkinnedMesh
+  | TokenSprite

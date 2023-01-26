@@ -11,7 +11,20 @@ import { Helper } from './components/Helpers'
 import { Geometry } from './components/Geometries'
 import { Light, LightProbe } from './components/Lights'
 import { Material } from './components/Materials'
-import { Group, Line, Mesh, Scene } from './components/Object3D'
+import {
+  Group,
+  Line,
+  Mesh,
+  Scene,
+  LineLoop,
+  LineSegments,
+  Sprite,
+  Skeleton,
+  Bone,
+  LOD,
+  SkinnedMesh,
+  Points,
+} from './components/Object3D'
 import Selector from './components/Selector'
 import { Texture } from './components/Textures'
 
@@ -62,10 +75,20 @@ window.THREE = THREE
 
 export {
   Canvas,
+  // Object3D
   Group,
   Mesh,
   Line,
   Scene,
+  LineLoop,
+  LineSegments,
+  Sprite,
+  Skeleton,
+  Bone,
+  LOD,
+  SkinnedMesh,
+  Points,
+  // All other namespaces
   Geometry,
   Material,
   Light,
@@ -75,10 +98,13 @@ export {
   Curve,
   Curve3,
   Helper,
-  tween,
   CSS,
   Controls,
-  AnimationSet,
   Selector,
+  // helper-functions
+  tween,
+  // animation-queue
+  AnimationSet,
+  // threejs
   THREE,
 }

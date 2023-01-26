@@ -19,11 +19,8 @@ export const Group = createToken<PropsGroup, TokenGroup>(props => {
 
   const tokens = childrenTokens(() => props.children)
 
-  // set ref
   createEffect(() => props.ref?.(three))
-  // grouping elements
   createChildrenEffect(three, tokens)
-  // transform Object3D
   createTransformEffect(three, props)
 
   return {
@@ -43,7 +40,6 @@ export const Mesh = createToken<PropsMesh, TokenMesh>(props => {
 
   const tokens = childrenTokens(() => props.children)
 
-  // set ref
   createEffect(() => props.ref?.(three))
   // find child who is of type Material and child who is of type Geometry
   createEffect(() => {
@@ -61,7 +57,6 @@ export const Mesh = createToken<PropsMesh, TokenMesh>(props => {
   })
   createEffect(() => (three.geometry = geometry()))
 
-  // transform Object3D
   createTransformEffect(three, props)
 
   createPropsEffect(three, props, ['rotation', 'scale', 'position', 'ref'])
@@ -88,7 +83,6 @@ export const Line = createToken<PropsLine, TokenLine>(props => {
 
   const tokens = childrenTokens(() => props.children)
 
-  // set ref
   createEffect(() => props.ref?.(three))
   // find child who is of type Material and child who is of type Geometry
   createEffect(() => {
@@ -112,7 +106,6 @@ export const Line = createToken<PropsLine, TokenLine>(props => {
   })
   createEffect(() => (three.geometry = geometry()))
 
-  // transform Object3D
   createTransformEffect(three, props)
 
   onCleanup(() => {
@@ -135,17 +128,47 @@ export const Scene = createToken<PropsScene, TokenScene>(props => {
 
   const context = useTriangle()
 
-  // set ref
   createEffect(() => props.ref?.(three))
-  // grouping elements
   createChildrenEffect(three, tokens)
-  // transform Object3D
   createTransformEffect(three, props)
 
   return {
     props,
     id: 'Scene',
-    type: 'Scene',
+    type: 'Object3D',
+    three,
+  }
+})
+
+export const Points = createToken<PropsPoints, TokenPoints>(props => {
+  const three = new THREE.Points()
+
+  const tokens = childrenTokens(() => props.children)
+
+  const context = useTriangle()
+
+  createEffect(() => props.ref?.(three))
+  createChildrenEffect(three, tokens)
+  createTransformEffect(three, props)
+
+  return {
+    props,
+    id: 'Points',
+    type: 'Object3D',
+    three,
+  }
+})
+
+export const Bone = createToken<PropsBone, TokenBone>(props => {
+  const three = new THREE.Bone()
+  const tokens = childrenTokens(() => props.children)
+  createEffect(() => props.ref?.(three))
+  createChildrenEffect(three, tokens)
+  createTransformEffect(three, props)
+  return {
+    props,
+    id: 'Bone',
+    type: 'Object3D',
     three,
   }
 })

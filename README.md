@@ -386,19 +386,19 @@ const App => (
   - [x] ShaderMaterial 👉 `<Material.Shader/>`
   - [x] ShadowMaterial 👉 `<Material.Shadow/>`
   - [x] SpriteMaterial 👉 `<Material.Sprite/>`
-- Objects
-  - [ ] Bone
+- Object3Ds
+  - [x] Bone 👉 `<Bone/>`
   - [x] Group 👉 `<Group/>`
-  - [ ] InstancedMesh
+  - [x] InstancedMesh 👉 `<InstancedMesh/>`
   - [x] Line 👉 `<Line/>`
-  - [ ] LineLoop
-  - [ ] LineSegments
-  - [ ] LOD
+  - [x] LineLoop 👉 `<LineLoop/>`
+  - [x] LineSegments 👉 `<LineSegments/>`
+  - [x] LOD 👉 `<LOD/>`
   - [x] Mesh 👉 `<Mesh/>`
-  - [ ] Points
-  - [ ] Skeleton
-  - [ ] SkinnedMesh
-  - [ ] Sprite
+  - [x] Points 👉 `<Points/>`
+  - [x] Skeleton 👉 `<Skeleton/>`
+  - [x] SkinnedMesh 👉 `<SkinnedMesh/>`
+  - [x] Sprite 👉 `<Sprite/>`
 - Post-Processing
   - [ ] Lensflare
   - [ ] EffectComposer
