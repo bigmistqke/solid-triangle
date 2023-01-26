@@ -90,13 +90,10 @@ export default (props: CanvasProps) => {
     }, 0)
   }
 
-  createEffect(() => console.log('camera is ', camera(), scene()))
-
   const render = () => {
     AnimationSet.forEach(func => func())
     raycast()
     if (scene() && camera()) {
-      // console.log("renderer", renderer)
       // cssRenderer.render(scene()!, merged.camera);
       renderer.render(scene(), camera())
     }

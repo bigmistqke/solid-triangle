@@ -8,6 +8,7 @@ import {
   CSS,
   Geometry,
   Group,
+  Helper,
   Material,
   Mesh,
   Scene,
@@ -33,6 +34,7 @@ const Planets = (props: { projects: any[] }) => {
 
   return (
     <Scene id="planets">
+      <Helper.Grid position={{ x: 0, y: -2, z: 0 }} />
       <Group
         rotation={new THREE.Euler(0, 0, Math.random() - 0.5)}
         position={new THREE.Vector3(0, -0.5, 3)}
@@ -131,7 +133,6 @@ const App: Component = () => {
 
   let pos = new THREE.Vector3(0, 0, 0)
   const onMouseDown = () => {
-    console.log(hoveredMesh())
     if (hoveredMesh()) {
       setSelectedMesh(hoveredMesh())
       hoveredMesh()!.getWorldPosition(pos)
@@ -242,8 +243,6 @@ const App: Component = () => {
     setTimeout(initAnimation, 100)
   }
   initAnimation()
-
-  createEffect(() => console.log('mainCamera', mainCamera()))
 
   const [activeScene, setActiveScene] = createSignal('planets')
 

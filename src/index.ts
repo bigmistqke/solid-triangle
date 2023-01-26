@@ -6,6 +6,8 @@ import Canvas, { AnimationSet } from './components/Canvas'
 import { Controls } from './components/Controls'
 import { CSS } from './components/CSS'
 import { Curve, Curve3 } from './components/Curves'
+import { Helper } from './components/Helpers'
+
 import { Geometry } from './components/Geometries'
 import { Light } from './components/Lights'
 import { Material } from './components/Materials'
@@ -71,6 +73,7 @@ export {
   Camera,
   Curve,
   Curve3,
+  Helper,
   tween,
   CSS,
   Controls,

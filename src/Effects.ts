@@ -15,8 +15,13 @@ export const createChildrenEffect = (
 ) => {
   const o = () => (typeof object === 'function' ? object() : object)
   mapTokens(tokens, token => {
-    if (token.type === 'Object3D' || token.type === 'Light' || token.type === 'CSS') {
-      const element = token.three
+    if (
+      token.type === 'Object3D' ||
+      token.type === 'Light' ||
+      token.type === 'CSS' ||
+      token.type === 'Helper'
+    ) {
+      const element = typeof token.three === 'function' ? token.three() : token.three
       o().add(element)
       onCleanup(() => o().remove(element))
     } else if (token.type === 'Modifier') {
@@ -86,7 +91,6 @@ export const createPropsEffect = <TToken extends ThreeToken>(
   props: TToken['props'],
   ignore?: string[],
 ) => {
-  console.log('createPropsEffect', three, props)
   const propKeys = Object.keys(props) as (keyof TToken['props'])[]
   propKeys.forEach(propKey => {
     if (ignore && typeof propKey === 'string' && ignore.includes(propKey)) return

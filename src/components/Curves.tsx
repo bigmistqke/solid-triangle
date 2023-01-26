@@ -35,18 +35,21 @@ export const Curve = {
       },
       props,
     )
-    const three = new THREE.EllipseCurve(
-      merged.aX,
-      merged.aY,
-      merged.xRadius,
-      merged.yRadius,
-      merged.aStartAngle,
-      merged.aEndAngle,
-      merged.aClockwise,
-      merged.aRotation,
+    const three = createMemo(
+      () =>
+        new THREE.EllipseCurve(
+          merged.aX,
+          merged.aY,
+          merged.xRadius,
+          merged.yRadius,
+          merged.aStartAngle,
+          merged.aEndAngle,
+          merged.aClockwise,
+          merged.aRotation,
+        ),
     )
 
-    const points = createMemo(() => three.getPoints(props.amount ?? 50))
+    const points = createMemo(() => three().getPoints(props.amount ?? 50))
 
     createRefEffect(three, merged)
     createPropsEffect(three, merged)
