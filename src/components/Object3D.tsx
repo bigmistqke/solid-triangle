@@ -172,3 +172,87 @@ export const Bone = createToken<PropsBone, TokenBone>(props => {
     three,
   }
 })
+
+export const Skeleton = createToken<PropsSkeleton, TokenSkeleton>(props => {
+  const three = new THREE.Skeleton(props.bones, props.boneInverses)
+  const tokens = childrenTokens(() => props.children)
+  createEffect(() => props.ref?.(three))
+  createChildrenEffect(three, tokens)
+  createTransformEffect(three, props)
+  return {
+    props,
+    id: 'Skeleton',
+    type: 'Object3D',
+    three,
+  }
+})
+
+export const LineLoop = createToken<PropsLineLoop, TokenLineLoop>(props => {
+  const three = new THREE.LineLoop(props.bones, props.boneInverses)
+  const tokens = childrenTokens(() => props.children)
+  createEffect(() => props.ref?.(three))
+  createChildrenEffect(three, tokens)
+  createTransformEffect(three, props)
+  return {
+    props,
+    id: 'LineLoop',
+    type: 'Object3D',
+    three,
+  }
+})
+
+export const LineSegments = createToken<PropsLineSegments, TokenLineSegments>(props => {
+  const three = new THREE.LineSegments(props.bones, props.boneInverses)
+  const tokens = childrenTokens(() => props.children)
+  createEffect(() => props.ref?.(three))
+  createChildrenEffect(three, tokens)
+  createTransformEffect(three, props)
+  return {
+    props,
+    id: 'LineSegments',
+    type: 'Object3D',
+    three,
+  }
+})
+
+export const SkinnedMesh = createToken<PropsSkinnedMesh, TokenSkinnedMesh>(props => {
+  const three = new THREE.SkinnedMesh(props.bones, props.boneInverses)
+  const tokens = childrenTokens(() => props.children)
+  createEffect(() => props.ref?.(three))
+  createChildrenEffect(three, tokens)
+  createTransformEffect(three, props)
+  return {
+    props,
+    id: 'SkinnedMesh',
+    type: 'Object3D',
+    three,
+  }
+})
+
+export const LOD = createToken<PropsLOD, TokenLOD>(props => {
+  const three = new THREE.LOD(props.bones, props.boneInverses)
+  const tokens = childrenTokens(() => props.children)
+  createEffect(() => props.ref?.(three))
+  createChildrenEffect(three, tokens)
+  createTransformEffect(three, props)
+  return {
+    props,
+    id: 'LOD',
+    type: 'Object3D',
+    three,
+  }
+})
+
+export const Sprite = createToken<PropsSprite, TokenSprite>(props => {
+  const three = new THREE.Sprite(props.material)
+  const tokens = childrenTokens(() => props.children)
+  createEffect(() => props.ref?.(three))
+  createChildrenEffect(three, tokens)
+  createTransformEffect(three, props)
+  return {
+    props,
+    id: 'Sprite',
+    type: 'Object3D',
+    three,
+  }
+})
