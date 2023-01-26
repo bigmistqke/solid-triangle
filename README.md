@@ -288,24 +288,24 @@ const App => (
   - [ ] OBJExporter
   - [ ] PLYExporter
 - Helpers
-  - [ ] ArrowHelper
-  - [ ] AxesHelper
-  - [ ] BoxHelper
-  - [ ] Box3Helper
-  - [ ] CameraHelper
-  - [ ] DirectionalLightHelper
+  - [x] ArrowHelper 👉 `<Helper.Arrow />`
+  - [x] AxesHelper 👉 `<Helper.Axes />`
+  - [x] BoxHelper 👉 `<Helper.Box />`
+  - [x] Box3Helper 👉 `<Helper.Box3 />`
+  - [x] CameraHelper 👉 `<Helper.Camera />`
+  - [x] DirectionalLightHelper 👉 `<Helper.DirectionalLight />`
+  - [x] PolarGridHelper 👉 `<Helper.PolarGrid />`
   - [x] GridHelper 👉 `<Helper.Grid/>`
-  - [ ] PolarGridHelper
-  - [ ] HemisphereLightHelper
-  - [ ] PlaneHelper
-  - [ ] PointLightHelper
-  - [ ] SkeletonHelper
-  - [ ] SpotLightHelper
-  - [ ] LightProbeHelper
-  - [ ] PositionalAudioHelper
-  - [ ] RectAreaLightHelper
-  - [ ] VertexNormalsHelper
-  - [ ] VertexTangentsHelper
+  - [x] HemisphereLightHelper 👉 `<Helper.HemisphereLight />`
+  - [x] PlaneHelper 👉 `<Helper.Plane />`
+  - [x] PointLightHelper 👉 `<Helper.PointLight />`
+  - [x] SkeletonHelper 👉 `<Helper.Skeleton />`
+  - [x] SpotLightHelper 👉 `<Helper.SpotLight />`
+  - [x] LightProbeHelper 👉 `<Helper.LightProbe />`
+  - [x] PositionalAudioHelper 👉 `<Helper.PositionalAudio />`
+  - [x] RectAreaLightHelper 👉 `<Helper.RectAreaLight />`
+  - [x] VertexNormalsHelper 👉 `<Helper.VertexNormals />`
+  - [x] VertexTangentsHelper 👉 `<Helper.VertexTangents />`
 - Geometries
   - [x] BufferGeometry 👉 `<Geometry.Buffer/>`
   - [x] BoxGeometry 👉 `<Geometry.Box/>`
@@ -519,6 +519,7 @@ const App => (
   - Improve type-readability
     - I use some type-helpers to infer types from `threejs` to help w the development, but it makes the types of the props practically unreadable.
 - Minimize the threejs-load
+
   - Currently I namespace the components like `<Material.Mesh.Basic/>` because this is really great for DX and for ease-of-development of the library, but I have to test what this means for code-splitting, my guess is probably not great. Threejs is overall not that great with code-splitting (400kb for hello world lol), so I wonder if the extra kbs matter or not. A minimized fork of threejs+solid-triangle (solid-triangle/petite) could be an option too. I am very open for suggestions on this topic.
 
 - Explore combinations with different `jsx-parser`: p.ex `flexbox-canvas-parser` as map for `<Texture.Canvas/>` to easily integrate layouts/typographic compositions inside a threejs-environment.

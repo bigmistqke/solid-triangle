@@ -64,7 +64,7 @@ export const Mesh = createToken<PropsMesh, TokenMesh>(props => {
   // transform Object3D
   createTransformEffect(three, props)
 
-  createPropsEffect(three, props, ['rotation', 'scale', 'position'])
+  createPropsEffect(three, props, ['rotation', 'scale', 'position', 'ref'])
 
   onCleanup(() => {
     geometry().dispose()

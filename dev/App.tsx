@@ -32,9 +32,26 @@ const Planets = (props: { projects: any[] }) => {
   }
   AnimationSet.add(animate)
 
+  const [mesh, setMesh] = createSignal<THREE.Object3D>()
+  const [plane, setPlane] = createSignal<THREE.Plane>()
+
+  createEffect(() => console.log('mesh is ', mesh()))
+
+  const rand = Math.random()
+
   return (
     <Scene id="planets">
       <Helper.Grid position={{ x: 0, y: -2, z: 0 }} />
+      <Helper.Axes position={{ x: 0, y: -2, z: 0 }} />
+      <Helper.PolarGrid position={{ x: 0, y: 1, z: 0 }} />
+      <Helper.Box color={new THREE.Color('red')} object={mesh()!} position={{ x: 0, y: 1, z: 0 }} />
+      {/* <Helper.Plane plane={plane()} /> */}
+
+      <Mesh ref={setMesh}>
+        <Geometry.Sphere />
+        <Material.Mesh.Basic />
+      </Mesh>
+
       <Group
         rotation={new THREE.Euler(0, 0, Math.random() - 0.5)}
         position={new THREE.Vector3(0, -0.5, 3)}
