@@ -240,7 +240,7 @@ export type TokenHelpers =
   | TokenBox3Helper
   | TokenBoxHelper
   | TokenCameraHelper
-  | TokenCanvasText
+  // | TokenCanvasText
   | TokenDirectionalLightHelper
   | TokenGridHelper
   | TokenHemisphereLightHelper

@@ -1,5 +1,6 @@
 import { JSXElement } from 'solid-js'
-import { NestedFromInstance } from '../BaseTypes'
+import THREE from 'three'
+import { NestedFromClassAndInstance, NestedFromInstance } from '../BaseTypes'
 
 export type PropsGroup = NestedFromInstance<THREE.Group>
 export type TokenGroup = {
@@ -104,7 +105,14 @@ export type TokenLineSegments = {
 }
 
 export type PropsSkinnedMesh =
-  | Omit<NestedFromInstance<THREE.SkinnedMesh>, 'id'> & {
+  | Omit<
+      NestedFromClassAndInstance<
+        THREE.SkinnedMesh,
+        typeof THREE.SkinnedMesh,
+        ['geometry', 'material', 'useVertexTexture']
+      >,
+      'id'
+    > & {
       active?: boolean
       id: string | number
       children: JSXElement | JSXElement[]
@@ -154,3 +162,4 @@ export type TokenObject3Ds =
   | TokenSkeleton
   | TokenSkinnedMesh
   | TokenSprite
+  | TokenLOD

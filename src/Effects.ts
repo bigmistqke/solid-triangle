@@ -62,12 +62,8 @@ export const createObject3DEffect = <
   props: TProps,
   tokens: Accessor<ThreeToken[]>,
 ) => {
-  const t = () => (typeof three === 'function' ? three() : three)
-  // set ref
   createRefEffect(three, props)
-  // grouping elements
   createChildrenEffect(three, tokens)
-  // transform Object3D
   createTransformEffect(three, props)
 }
 
