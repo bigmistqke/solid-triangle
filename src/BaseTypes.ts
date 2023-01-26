@@ -43,8 +43,8 @@ export type NestedFromClassAndInstance<
 
 export type XYZ = { x: number; y: number; z: number }
 
-export type Pose = {
+export type Pose = Partial<{
   position: XYZ
   rotation: XYZ
   scale: XYZ
-}
+}>
