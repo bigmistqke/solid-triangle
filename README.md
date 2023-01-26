@@ -279,7 +279,6 @@ const App => (
 - Curve3
   - [x] CatmullRomCurve3 👉 `<Curve3.CatmullRom/>`
   - [x] CubicBezierCurve3 👉 `<Curve3.Ellipse/>`
-  - [x] EllipseCurve 👉 `<Curve.Ellipse/>`
   - [x] LineCurve3 👉 `<Curve3.Line/>`
   - [x] QuadraticBezierCurve3 👉 `<Curve3.QuadraticBezier/>`
 - Exporter
