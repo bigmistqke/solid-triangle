@@ -8,6 +8,7 @@
 
 🔺 typesafe, easily extendable threejs-renderer for solidjs 🔺 <br>
 🔥 powered by [@solid-primitives/jsx-parser](https://github.com/solidjs-community/solid-primitives/pull/276) 🔥
+renderer without usage of [universal renderer](https://github.com/solidjs/solid/releases/tag/v1.2.0)
 
 ## Quick start
 
@@ -201,6 +202,28 @@ const App => (
        </Mesh>
       </Scene>
     </Selector>
+  </Canvas>
+)
+```
+
+### <CSS.Object/>
+
+```tsx
+import {Canvas, Scene, Mesh, Material, Geometry, Selector} from 'solid-triangle'
+
+const sin = () => Math.sin(performance.now / 100);
+const [axis, setAxis] = createSignal(sin())
+setInterval(() => setAxis(sin())
+
+const position = () => ({x: axis(), y: axis(), z: axis()})
+
+const App => (
+  <Canvas>
+    <CSS.Object position={position()}>
+      <div>
+        'this is a div-element floating in space'
+      </div>
+    </CSS.Object>
   </Canvas>
 )
 ```
@@ -469,7 +492,7 @@ const App => (
   - [x] Texture 👉 `<Texture.Default/>`
   - [ ] VideoTexture
 
-- Additional Api
+## Additional Api
   - context
     - [x] `<Canvas/>`
       - root-component provides context
@@ -483,3 +506,17 @@ const App => (
     - [ ] onmouseover
     - [ ] onmousedown
   - [ ] control over what gets pre-loaded
+  
+## Plans/Overall ambitions for the project/Reflections
+  1. [ ] Cover the full API of threejs
+  2. Explore the limits of `@solid-primitives/jsx-parser`
+  - `jsx-parser` offers a way to write custom renderers without using solid's `universal renderer`. Solid's `universal renderer` is very powerful, but is a bit finnicky to set-up in a new project and, afaik, only offers a top-down way of writing the renderer: all parsing logic is done from the renderer. `jsx-parser` offers a way to write a custom renderer a bit more similarly to how you would write a solid-app: logic can be done top-down but also be compartimentalized inside components themselves. `jsx-parser` allows for mixing and matching with different parsers and regular solid-code. This offers a lot of flexibility, but can can also be the cause of more repeated code in the codebase.
+  3. [ ] Advance typing components with JSDoc
+  4. Minimize the threejs-load
+  - Currently I namespace the components like `<Material.Mesh.Basic/>` because this is really great for DX and for ease-of-development of the library, but I have to test what this means for code-splitting, my guess is probably not great. Threejs is overall not that great with code-splitting (400kb for hello world lol), so I wonder if the extra kbs matter or not. A minimized fork of threejs+solid-triangle (solid-triangle/petite) could be an option too. I am very open for suggestions on this topic.
+  5. Explore combinations with different `jsx-parser`: p.ex `flexbox-canvas-parser` as map for `<Texture.Canvas/>` to easily integrate layouts/typographic compositions inside a threejs-environment.  
+  6. I wanna look into ways how to bring in post-processing && writing/combining shaders into the workflow.
+  7. Website
+  - [ ] Docs
+  - [ ] Examples
+  - [ ] Online repl with `solidjs` and `solid-triangle`
