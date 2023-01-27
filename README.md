@@ -6,8 +6,8 @@
 
 [![pnpm](https://img.shields.io/badge/maintained%20with-pnpm-cc00ff.svg?style=for-the-badge&logo=pnpm)](https://pnpm.io/)
 
-🔺 typesafe, easily extendable threejs-renderer for solidjs 🔺 <br>
-🔥 powered by [@solid-primitives/jsx-parser](https://github.com/solidjs-community/solid-primitives/pull/276) 🔥
+🔺 easily extendable threejs-renderer for solidjs 🔺<br>
+🔥 powered by [@solid-primitives/jsx-parser](https://github.com/solidjs-community/solid-primitives/pull/276) 🔥<br>
 renderer without usage of [universal renderer](https://github.com/solidjs/solid/releases/tag/v1.2.0)
 
 ## Quick start
@@ -317,7 +317,7 @@ const App => (
   - [x] CylinderGeometry 👉 `<Geometry.Cylinder/>`
   - [x] DodecahedronGeometry 👉 `<Geometry.Dodecahedron/>`
   - [x] EdgesGeometry 👉 `<Geometry.Edges/>`
-  - [x] ExtrudeGeometry 👉 `<Geometry.Extrue/>`
+  - [x] ExtrudeGeometry 👉 `<Geometry.Extrude/>`
   - [x] IcosahedronGeometry 👉 `<Geometry.Icosahedron/>`
   - [x] LatheGeometry 👉 `<Geometry.Lathe/>`
   - [x] OctahedronGeometry 👉 `<Geometry.Octahedron/>`
