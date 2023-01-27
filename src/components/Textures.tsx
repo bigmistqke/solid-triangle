@@ -22,7 +22,6 @@ import type {
   PropsDepthTexture,
   PropsFramebufferTexture,
   TokenCubeTexture,
-  TokenData3DTexture,
   TokenDataArrayTexture,
   TokenDepthTexture,
   TokenFramebufferTexture,
