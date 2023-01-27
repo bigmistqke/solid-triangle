@@ -317,7 +317,7 @@ const App => (
   - [x] CylinderGeometry 👉 `<Geometry.Cylinder/>`
   - [x] DodecahedronGeometry 👉 `<Geometry.Dodecahedron/>`
   - [x] EdgesGeometry 👉 `<Geometry.Edges/>`
-  - [x] ExtrudeGeometry 👉 `<Geometry.Extrue/>`
+  - [x] ExtrudeGeometry 👉 `<Geometry.Extrude/>`
   - [x] IcosahedronGeometry 👉 `<Geometry.Icosahedron/>`
   - [x] LatheGeometry 👉 `<Geometry.Lathe/>`
   - [x] OctahedronGeometry 👉 `<Geometry.Octahedron/>`
