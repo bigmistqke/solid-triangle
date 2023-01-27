@@ -1,17 +1,6 @@
 import { createSignal, onCleanup } from 'solid-js'
-import {
-  THREE,
-  AnimationSet,
-  Group,
-  Mesh,
-  CSS,
-  Line,
-  Geometry,
-  Material,
-  Texture,
-  Curve,
-  Curve3,
-} from '../src'
+import { AnimationSet, Curve3, Geometry, Group, Line, Material, THREE } from '../src'
+import { Triangle } from '../src/types'
 
 export default (props: {
   index: number
@@ -38,6 +27,9 @@ export default (props: {
       v2={new THREE.Vector3(3, 1, 0)}
     />
   )
+
+  const x = curveJSX as any as Triangle.Curve3.QuadraticBezier
+  console.log('x.type', x.type)
 
   const animate = () => {
     let s = props.selected ? 0 : props.shouldPlay ? speed : speed * 0.125

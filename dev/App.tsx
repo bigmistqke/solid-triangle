@@ -1,4 +1,5 @@
 import { Component, createEffect, createSelector, createSignal, For, Index, Show } from 'solid-js'
+import { Triangle } from '../src/types'
 import * as THREE from 'three'
 import {
   AnimationSet,
@@ -6,6 +7,7 @@ import {
   Canvas,
   Controls,
   CSS,
+  Curve3,
   Geometry,
   Group,
   Helper,
@@ -49,6 +51,18 @@ const Planets = (props: { projects: any[] }) => {
   const [light, setLight] = createSignal<THREE.PointLight>()
 
   createEffect(() => console.log('LIGHT IS ', light()))
+
+  const curveJSX = (
+    <Curve3.QuadraticBezier
+      amount={100}
+      v0={new THREE.Vector3(0, 1, 0)}
+      v1={new THREE.Vector3(2, 1, 0)}
+      v2={new THREE.Vector3(3, 1, 0)}
+    />
+  )
+
+  const x = curveJSX as any as Triangle.Curve3.QuadraticBezier
+  console.log('x.type', x.three())
 
   return (
     <Scene id="planets">
@@ -367,7 +381,7 @@ const App: Component = () => {
           />
           <Selector.Scene id={activeScene()}>
             <Planets projects={projects()} />
-            <Scene id="intro">
+            {/*  <Scene id="intro">
               <Group
                 rotation={new THREE.Euler(0, 0, Math.random() - 0.5)}
                 position={new THREE.Vector3(0, -0.5, 3)}
@@ -382,6 +396,7 @@ const App: Component = () => {
                 </Mesh>
               </Group>
             </Scene>
+          */}
           </Selector.Scene>
         </Canvas>
         gv
