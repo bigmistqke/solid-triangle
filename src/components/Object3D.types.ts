@@ -18,6 +18,14 @@ export type TokenMesh = {
   props: PropsMesh
 }
 
+export type PropsInstancedMesh = NestedFromInstance<THREE.InstancedMesh>
+export type TokenInstancedMesh = {
+  id: 'InstancedMesh'
+  type: 'Object3D'
+  three: THREE.InstancedMesh
+  props: PropsInstancedMesh
+}
+
 export type PropsLine = NestedFromInstance<THREE.Line>
 export type TokenLine = {
   id: 'Line'
@@ -163,3 +171,4 @@ export type TokenObject3Ds =
   | TokenSkinnedMesh
   | TokenSprite
   | TokenLOD
+  | TokenInstancedMesh

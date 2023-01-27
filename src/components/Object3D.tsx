@@ -10,6 +10,7 @@ import {
 import type {
   PropsBone,
   PropsGroup,
+  PropsInstancedMesh,
   PropsLine,
   PropsLineLoop,
   PropsLineSegments,
@@ -22,6 +23,7 @@ import type {
   PropsSprite,
   TokenBone,
   TokenGroup,
+  TokenInstancedMesh,
   TokenLine,
   TokenLineLoop,
   TokenLineSegments,
@@ -67,7 +69,9 @@ export const Mesh = createToken<PropsMesh, TokenMesh>(props => {
       if (token.type === 'Material') {
         setMaterial(token.three)
       } else if (token.type === 'Geometry') {
-        setGeometry(token.three)
+        const t = token.three()
+        if (!t) return
+        setGeometry(t)
       }
     })
   })
@@ -87,6 +91,48 @@ export const Mesh = createToken<PropsMesh, TokenMesh>(props => {
   return {
     props,
     id: 'Mesh',
+    type: 'Object3D',
+    three,
+  }
+})
+
+export const InstancedMesh = createToken<PropsInstancedMesh, TokenInstancedMesh>(props => {
+  const [geometry, setGeometry] = createSignal<THREE.BufferGeometry>(
+    new THREE.BoxGeometry(0.2, 0.2, 0.2),
+  )
+  const [material, setMaterial] = createSignal<THREE.Material>(new THREE.MeshBasicMaterial())
+  const three = new THREE.InstancedMesh(geometry(), material(), props.count ?? 1)
+
+  const tokens = childrenTokens(() => props.children)
+
+  createEffect(() => props.ref?.(three))
+  // find child who is of type Material and child who is of type Geometry
+  createEffect(() => {
+    tokens().forEach(token => {
+      if (token.type === 'Material') {
+        setMaterial(token.three)
+      } else if (token.type === 'Geometry') {
+        const t = token.three()
+        if (!t) return
+        setGeometry(t)
+      }
+    })
+  })
+  createEffect(() => {
+    three.material = material()
+    three.material.needsUpdate = true
+  })
+  createEffect(() => (three.geometry = geometry()))
+  createTransformEffect(three, props)
+  createPropsEffect(three, props, ['rotation', 'scale', 'position', 'ref'])
+
+  onCleanup(() => {
+    geometry().dispose()
+    material().dispose()
+  })
+  return {
+    props,
+    id: 'InstancedMesh',
     type: 'Object3D',
     three,
   }
