@@ -85,7 +85,7 @@ export const createLightEffect = (
   createEffect(() => (props.shadow ? (light.shadow = props.shadow) : undefined))
 }
 
-const IGNORE = ['position', 'scale', 'rotation', 'ref']
+const IGNORE = ['position', 'scale', 'rotation', 'ref', 'id']
 
 export const createPropsEffect = <TToken extends ThreeToken>(
   three: TToken['three'],
