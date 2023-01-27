@@ -245,7 +245,7 @@ const jsx = (
 )
 
 const token = jsx as any as Triangle.Curve3.QuadraticBezier
-token.props.amount // 100
+token.props.amount // number
 token.id // QuadraticBezierCurve3
 token.three // Accessor<THREE.QuadraticBezierCurve3>
 
