@@ -63,8 +63,11 @@ export const createObject3DEffect = <
   tokens: Accessor<ThreeToken[]>,
 ) => {
   createRefEffect(three, props)
-  createChildrenEffect(three, tokens)
-  createTransformEffect(three, props)
+  if (!(three instanceof THREE.Skeleton)) {
+    createChildrenEffect(three, tokens)
+    createTransformEffect(three, props)
+  }
+  createPropsEffect(three, props)
 }
 
 export const createLightEffect = (
