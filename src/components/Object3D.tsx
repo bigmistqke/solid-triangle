@@ -40,10 +40,7 @@ export const Group = createToken<PropsGroup, TokenGroup>(props => {
   const three = new THREE.Group()
 
   const tokens = childrenTokens(() => props.children)
-
-  createEffect(() => props.ref?.(three))
-  createChildrenEffect(three, tokens)
-  createTransformEffect(three, props)
+  createObject3DEffect(three, props, tokens)
 
   return {
     props,
@@ -61,8 +58,8 @@ export const Mesh = createToken<PropsMesh, TokenMesh>(props => {
   const three = new THREE.Mesh(geometry(), material())
 
   const tokens = childrenTokens(() => props.children)
+  createObject3DEffect(three, props, tokens)
 
-  createEffect(() => props.ref?.(three))
   // find child who is of type Material and child who is of type Geometry
   createEffect(() => {
     tokens().forEach(token => {
@@ -80,8 +77,6 @@ export const Mesh = createToken<PropsMesh, TokenMesh>(props => {
     three.material.needsUpdate = true
   })
   createEffect(() => (three.geometry = geometry()))
-  createTransformEffect(three, props)
-  createPropsEffect(three, props, ['rotation', 'scale', 'position', 'ref'])
 
   onCleanup(() => {
     geometry().dispose()
@@ -104,8 +99,8 @@ export const InstancedMesh = createToken<PropsInstancedMesh, TokenInstancedMesh>
   const three = new THREE.InstancedMesh(geometry(), material(), props.count ?? 1)
 
   const tokens = childrenTokens(() => props.children)
+  createObject3DEffect(three, props, tokens)
 
-  createEffect(() => props.ref?.(three))
   // find child who is of type Material and child who is of type Geometry
   createEffect(() => {
     tokens().forEach(token => {
@@ -123,8 +118,6 @@ export const InstancedMesh = createToken<PropsInstancedMesh, TokenInstancedMesh>
     three.material.needsUpdate = true
   })
   createEffect(() => (three.geometry = geometry()))
-  createTransformEffect(three, props)
-  createPropsEffect(three, props, ['rotation', 'scale', 'position', 'ref'])
 
   onCleanup(() => {
     geometry().dispose()
