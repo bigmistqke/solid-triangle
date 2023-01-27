@@ -37,7 +37,7 @@ import {Canvas, Mesh, Material, Geometry} from 'solid-triangle'
 const [y, setY] = createSignal(0)
 
 setInterval(() => setY(y => y + 1), 1000 / 30)
-const rotation = () => ({x: 0, y: rotation(), z: 0})
+const rotation = () => ({x: 0, y: y(), z: 0})
 
 const App => (
   <Canvas>
