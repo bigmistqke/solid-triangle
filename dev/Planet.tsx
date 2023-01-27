@@ -29,8 +29,7 @@ export default (props: {
   )
 
   const x = curveJSX as any as Triangle.Curve3.QuadraticBezier
-  console.log('x.type', x.type)
-
+  x.props.amount
   const animate = () => {
     let s = props.selected ? 0 : props.shouldPlay ? speed : speed * 0.125
     setFraction(value => (value + s) % 1)

@@ -515,17 +515,17 @@ const App => (
 - Textures
 
   - [x] CanvasTexture 👉 `<Texture.Canvas/>`
-  - [ ] CompressedTexture
-  - [ ] CompressedArrayTexture
-  - [ ] CubeTexture
-  - [ ] Data3DTexture
-  - [ ] DataArrayTexture
-  - [ ] DataTexture
-  - [ ] DepthTexture
-  - [ ] FramebufferTexture
+  - [x] CompressedTexture 👉 `<Texture.Compressed/>`
+  - [x] CompressedArrayTexture 👉 `<Texture.CompressedArray/>`
+  - [x] CubeTexture 👉 `<Texture.Cube/>`
+  - [x] Data3DTexture 👉 `<Texture.Data3D/>`
+  - [x] DataArrayTexture 👉 `<Texture.DataArray/>`
+  - [x] DataTexture 👉 `<Texture.Data/>`
+  - [x] DepthTexture 👉 `<Texture.Depth/>`
+  - [x] FramebufferTexture 👉 `<Texture.Framebuffer/>`
   - [ ] Source
   - [x] Texture 👉 `<Texture.Default/>`
-  - [ ] VideoTexture
+  - [x] VideoTexture 👉 `<Texture.Video/>`
 
 ## Additional Api
 
