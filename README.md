@@ -228,6 +228,34 @@ const App => (
 )
 ```
 
+### typecast JSX to token
+
+```tsx
+import {Canvas, Scene, Mesh, Material, Geometry, Selector} from 'solid-triangle'
+import Triangle from 'solid-triangle/types'
+
+const jsx = (
+  <Curve3.QuadraticBezier
+    amount={100}
+    ref={setCurve}
+    v0={new THREE.Vector3(0, 1, 0)}
+    v1={new THREE.Vector3(2, 1, 0)}
+    v2={new THREE.Vector3(3, 1, 0)}
+  />
+)
+
+const token = jsx as any as Triangle.Curve3.QuadraticBezier
+token.props.amount // 100
+token.id // QuadraticBezierCurve3
+token.three // Accessor<THREE.QuadraticBezierCurve3>
+
+const App => (
+  <Canvas>
+    {jsx}
+  </Canvas>
+)
+```
+
 ## API-coverage:
 
 - Animation
