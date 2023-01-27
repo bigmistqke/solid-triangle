@@ -10,7 +10,7 @@ import { createToken } from '../ParserFunctions'
 import type {
   PropsAmbientLight,
   PropsAmbientLightProbe,
-  PropsDefaultLight,
+  PropsLight,
   PropsDirectionalLight,
   PropsHemisphereLight,
   PropsHemisphereLightProbe,
@@ -19,7 +19,7 @@ import type {
   PropsRectAreaLight,
   TokenAmbientLight,
   TokenAmbientLightProbe,
-  TokenDefaultLight,
+  TokenLight,
   TokenDirectionalLight,
   TokenHemisphereLight,
   TokenHemisphereLightProbe,
@@ -86,14 +86,10 @@ export const Light = {
     }
   }),
   Hemisphere: createToken<PropsHemisphereLight, TokenHemisphereLight>(props => {
-    const light = new THREE.HemisphereLight(props.color, props.intensity, props.width, props.height)
-
-    createEffect(() => (light.width = props.width || 1))
-    createEffect(() => (light.height = props.height || 1))
+    const light = new THREE.HemisphereLight(props.skyColor, props.groundColor, props.intensity)
+    createRefEffect(light, props)
     createPropsEffect(light, props)
     createTransformEffect(light, props)
-    // TODO:  'You have to include HemisphereLightUniformsLib into your scene and call init()'
-    //        maybe we should initialize it if we see a HemisphereLight?
     return {
       props,
       id: 'HemisphereLight',
@@ -101,7 +97,7 @@ export const Light = {
       three: light,
     }
   }),
-  Default: createToken<PropsDefaultLight, TokenDefaultLight>(props => {
+  Default: createToken<PropsLight, TokenLight>(props => {
     const light = new THREE.Light(props.color, props.intensity)
 
     createLightEffect(light, props)
@@ -110,7 +106,7 @@ export const Light = {
 
     return {
       props,
-      id: 'DefaultLight',
+      id: 'Light',
       type: 'Light',
       three: light,
     }

@@ -1,6 +1,7 @@
 import { Accessor, JSX } from 'solid-js'
 import * as THREE from 'three'
 import { Vector2, Vector3 } from 'three'
+import { ConvexGeometry, DecalGeometry, ParametricGeometry, TextGeometry } from 'three-stdlib'
 import { LeafFromClassAndInstance } from '../BaseTypes'
 
 export type PropsBoxGeometry = LeafFromClassAndInstance<
@@ -300,6 +301,53 @@ export type TokenBufferGeometry = {
   props: PropsBufferGeometry
 }
 
+export type PropsConvexGeometry =
+  | LeafFromClassAndInstance<ConvexGeometry, typeof ConvexGeometry, ['points']> & {
+      points: JSX.Element | Vector3[] | Vector2[]
+    }
+export type TokenConvexGeometry = {
+  id: 'ConvexGeometry'
+  type: 'Geometry'
+  three: Accessor<ConvexGeometry>
+  props: PropsConvexGeometry
+}
+
+export type PropsDecalGeometry = LeafFromClassAndInstance<
+  DecalGeometry,
+  typeof DecalGeometry,
+  ['mesh', 'position', 'orientation', 'size']
+>
+export type TokenDecalGeometry = {
+  id: 'DecalGeometry'
+  type: 'Geometry'
+  three: Accessor<DecalGeometry>
+  props: PropsDecalGeometry
+}
+
+export type PropsParametricGeometry = LeafFromClassAndInstance<
+  ParametricGeometry,
+  typeof ParametricGeometry,
+  ['func', 'slices', 'stacks']
+>
+export type TokenParametricGeometry = {
+  id: 'ParametricGeometry'
+  type: 'Geometry'
+  three: Accessor<ParametricGeometry>
+  props: PropsParametricGeometry
+}
+
+export type PropsTextGeometry = LeafFromClassAndInstance<
+  TextGeometry,
+  typeof TextGeometry,
+  ['text', 'parameters']
+>
+export type TokenTextGeometry = {
+  id: 'TextGeometry'
+  type: 'Geometry'
+  three: Accessor<TextGeometry | undefined>
+  props: PropsTextGeometry
+}
+
 export type TokenGeometries =
   | TokenBoxGeometry
   | TokenSphereGeometry
@@ -323,3 +371,7 @@ export type TokenGeometries =
   | TokenTubeGeometry
   | TokenWireframeGeometry
   | TokenBufferGeometry
+  | TokenConvexGeometry
+  | TokenDecalGeometry
+  | TokenParametricGeometry
+  | TokenTextGeometry

@@ -308,6 +308,7 @@ const App => (
   - [x] VertexNormalsHelper 👉 `<Helper.VertexNormals />`
   - [x] VertexTangentsHelper 👉 `<Helper.VertexTangents />`
 - Geometries
+
   - [x] BufferGeometry 👉 `<Geometry.Buffer/>`
   - [x] BoxGeometry 👉 `<Geometry.Box/>`
   - [x] CapsuleGeometry 👉 `<Geometry.Capsule/>`
@@ -330,10 +331,12 @@ const App => (
   - [x] TorusKnotGeometry 👉 `<Geometry.TorusKnot/>`
   - [x] TubeGeometry 👉 `<Geometry.Tube/>`
   - [x] WireframeGeometry 👉 `<Geometry.Wireframe/>`
-  - [ ] ConvexGeometry
-  - [ ] DecalGeometry
-  - [ ] ParametricGeometry
-  - [ ] TextGeometry
+
+- Examples/Geometries
+  - [x] ConvexGeometry 👉 `<Geometry.Convex/>`
+  - [x] DecalGeometry 👉 `<Geometry.Decal/>`
+  - [x] ParametricGeometry 👉 `<Geometry.Parametric/>`
+  - [x] TextGeometry 👉 `<Geometry.Text/>`
 - Loaders
   - [ ] 3DMLoader
   - [ ] DRACOLoader

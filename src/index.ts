@@ -27,6 +27,7 @@ import {
 } from './components/Object3D'
 import Selector from './components/Selector'
 import { Texture } from './components/Textures'
+import { Font } from 'three-stdlib'
 
 const tween = (duration: number, callback: (alpha: number) => void) => {
   let alpha = 0
@@ -54,6 +55,7 @@ export const ThreeContext = createContext<{
   pointer?: Accessor<THREE.Vector2>
   clock?: Accessor<THREE.Clock>
   renderer?: Accessor<THREE.Renderer>
+  font?: Accessor<Font | undefined>
   /* linear?: boolean;
   flat?: boolean; */
   size?: Accessor<Size>

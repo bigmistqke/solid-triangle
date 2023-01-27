@@ -12,11 +12,13 @@ import {
   Vector2,
   WebGLRenderer,
 } from 'three'
+import { Font, FontLoader } from 'three-stdlib'
 import { CSS3DRenderer } from 'three/examples/jsm/renderers/CSS3DRenderer'
 import { NestedFromInstance } from '../BaseTypes'
 import { createChildrenEffect } from '../Effects'
 import { ThreeContext } from '../index'
 import { childrenTokens } from '../ParserFunctions'
+import helvetiker from '../font/helvetiker.json'
 
 export const AnimationSet: Set<() => void> = new Set()
 
@@ -28,6 +30,9 @@ type CanvasProps = NestedFromInstance<HTMLCanvasElement> & {
 export default (props: CanvasProps) => {
   let canvas: HTMLCanvasElement
   let cssContainer: HTMLDivElement
+
+  const loader = new FontLoader()
+  const [font, setFont] = createSignal<Font>(loader.parse(helvetiker as any))
 
   const merged = mergeProps(
     {
@@ -168,6 +173,7 @@ export default (props: CanvasProps) => {
           raycaster: () => raycaster,
           clock: () => clock,
           pointer: () => pointer,
+          font,
         }}
       >
         {props.children}

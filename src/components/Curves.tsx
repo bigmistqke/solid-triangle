@@ -62,42 +62,6 @@ export const Curve = {
       points,
     }
   }),
-  Arc: createToken<PropsArcCurve, TokenArcCurve>(props => {
-    const merged = mergeProps(
-      {
-        aX: 1,
-        aY: 1,
-        xRadius: 1,
-        yRadius: 1,
-        aStartAngle: 0,
-        aEndAngle: 2 * Math.PI,
-        aClockwise: false,
-        aRotation: 0,
-      },
-      props,
-    )
-    const three = new THREE.ArcCurve(
-      merged.aX,
-      merged.aY,
-      merged.xRadius,
-      merged.yRadius,
-      merged.aStartAngle,
-      merged.aEndAngle,
-    )
-
-    const points = createMemo(() => three.getPoints(props.amount ?? 50))
-
-    createRefEffect(three, merged)
-    createPropsEffect(three, merged)
-
-    return {
-      props,
-      id: 'ArcCurve',
-      type: 'Curve',
-      three,
-      points,
-    }
-  }),
 }
 
 /* function createCurveEffect<TToken extends TokenCurves | TokenCurves3>(
