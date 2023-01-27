@@ -237,7 +237,6 @@ import Triangle from 'solid-triangle/types'
 const jsx = (
   <Curve3.QuadraticBezier
     amount={100}
-    ref={setCurve}
     v0={new THREE.Vector3(0, 1, 0)}
     v1={new THREE.Vector3(2, 1, 0)}
     v2={new THREE.Vector3(3, 1, 0)}
