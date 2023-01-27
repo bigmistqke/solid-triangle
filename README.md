@@ -6,8 +6,8 @@
 
 [![pnpm](https://img.shields.io/badge/maintained%20with-pnpm-cc00ff.svg?style=for-the-badge&logo=pnpm)](https://pnpm.io/)
 
-🔺 typesafe, easily extendable threejs-renderer for solidjs 🔺 <br>
-🔥 powered by [@solid-primitives/jsx-parser](https://github.com/solidjs-community/solid-primitives/pull/276) 🔥
+🔺 easily extendable threejs-renderer for solidjs 🔺<br>
+🔥 powered by [@solid-primitives/jsx-parser](https://github.com/solidjs-community/solid-primitives/pull/276) 🔥<br>
 renderer without usage of [universal renderer](https://github.com/solidjs/solid/releases/tag/v1.2.0)
 
 ## Quick start
