@@ -14,7 +14,7 @@ export default {
       })
     })
     createEffect(mapTokens)
-    return <>{props.children}</>
+    return <></>
   },
   Camera: (props: { children: JSX.Element | JSX.Element[]; id: string }) => {
     const tokens = childrenTokens(() => props.children)
@@ -27,6 +27,6 @@ export default {
       })
     })
     createEffect(mapTokens)
-    return <>{props.children}</>
+    return <></>
   },
 }
