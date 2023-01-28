@@ -228,7 +228,7 @@ const App => (
 )
 ```
 
-### typecast JSX to token
+### escape-hatch: typecast JSX to token
 
 ```tsx
 import {Canvas, Scene, Mesh, Material, Geometry, Selector} from 'solid-triangle'
@@ -242,8 +242,11 @@ const jsx = (
     v2={new THREE.Vector3(3, 1, 0)}
   />
 )
+jsx // JSX.Element
 
 const token = jsx as any as Triangle.Curve3.QuadraticBezier
+
+token // TokenQuadraticBezierCurve3
 token.props.amount // number
 token.id // QuadraticBezierCurve3
 token.three // Accessor<THREE.QuadraticBezierCurve3>
@@ -251,6 +254,36 @@ token.three // Accessor<THREE.QuadraticBezierCurve3>
 const App => (
   <Canvas>
     {jsx}
+  </Canvas>
+)
+```
+
+### escape-hatch: use callback-form of token
+
+```tsx
+import {Canvas, Scene, Mesh, Material, Geometry, Selector} from 'solid-triangle'
+import Triangle from 'solid-triangle/types'
+
+const [point, setPoint] = createSignal({x: 3, y: 1, z: 0})
+
+const token = Curve3.QuadraticBezier({
+  amount: 100,
+  v0: new THREE.Vector3(0, 1, 0),
+  v1: new THREE.Vector3(2, 1, 0),
+  // use getter-function for dynamic variables
+  get v2(){
+    return point()
+  }
+})
+
+token // TokenQuadraticBezierCurve3
+token.props.amount // number
+token.id // QuadraticBezierCurve3
+token.three // Accessor<THREE.QuadraticBezierCurve3>
+
+const App => (
+  <Canvas>
+    {token}
   </Canvas>
 )
 ```
@@ -544,7 +577,6 @@ const App => (
 
 ## Plans/Overall ambitions for the project/Reflections
 
-- Cover the full API of threejs
 - Explore the limits of `@solid-primitives/jsx-parser`
   - `jsx-parser` offers a way to write custom renderers without using solid's `universal renderer`. Solid's `universal renderer` is very powerful, but is a bit finnicky to set-up in a new project and, afaik, only offers a top-down way of writing the renderer: all parsing logic is done from the renderer. `jsx-parser` offers a way to write a custom renderer a bit more similarly to how you would write a solid-app: logic can be done top-down but also be compartimentalized inside components themselves. `jsx-parser` allows for mixing and matching with different parsers and regular solid-code. This offers a lot of flexibility, but can can also be the cause of more repeated code in the codebase.
 - Types
@@ -552,12 +584,20 @@ const App => (
   - Improve type-readability
     - I use some type-helpers to infer types from `threejs` to help w the development, but it makes the types of the props practically unreadable.
 - Minimize the threejs-load
-
   - Currently I namespace the components like `<Material.Mesh.Basic/>` because this is really great for DX and for ease-of-development of the library, but I have to test what this means for code-splitting, my guess is probably not great. Threejs is overall not that great with code-splitting (400kb for hello world lol), so I wonder if the extra kbs matter or not. A minimized fork of threejs+solid-triangle (solid-triangle/petite) could be an option too. I am very open for suggestions on this topic.
-
 - Explore combinations with different `jsx-parser`: p.ex `flexbox-canvas-parser` as map for `<Texture.Canvas/>` to easily integrate layouts/typographic compositions inside a threejs-environment.
 - I wanna look into ways how to bring in post-processing && writing/combining shaders into the workflow.
-- Website
+- It's a pity `<JSX/>` will always be typed to `JSX.Element`. This means we can not really properly type-check, but only do runtime-checks.
+  
+## TODO
+- [ ] Cover the full API of threejs with all the constructor-parameters as props
+- [ ] Test out all the pieces
+- [ ] Enhance API (examples 👇)
+  - `<Vector3 x={0} y={1} z={2}/>` 👉 `<Vector3 xyz={[0,1,2]}/>`
+  - `<Curve.Bezier v0={<Vector3/>} v1={<Vector3/>} v2={<Vector3/>}/>` 👉 `<Curve.Bezier points={[<Vector3/>,<Vector3/>,<Vector3/>]}/>` or `<Curve.Bezier><Vector3/><Vector3/><Vector3/></Cubic.Bezier>`
+  - `<Material.Mesh.Basic map={<Texture source="./example.jpg"/>}/>` 👉 `<Material.Mesh.Basic><Texture id="map" source="./example.jpg"/></Material.Mesh.Basic/>`
+- [ ] Website
   - Docs
   - Examples
   - Online repl with `solidjs` and `solid-triangle`
+
