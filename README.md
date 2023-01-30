@@ -584,10 +584,11 @@ const App => (
   - Improve type-readability
     - I use some type-helpers to infer types from `threejs` to help w the development, but it makes the types of the props practically unreadable.
 - Minimize the threejs-load
-  - Currently I namespace the components like `<Material.Mesh.Basic/>` because this is really great for DX and for ease-of-development of the library, but I have to test what this means for code-splitting, my guess is probably not great. Threejs is overall not that great with code-splitting (400kb for hello world lol), so I wonder if the extra kbs matter or not. A minimized fork of threejs+solid-triangle (solid-triangle/petite) could be an option too. I am very open for suggestions on this topic.
+  - Currently I namespace the components like `<Material.Mesh.Basic/>` because this is really great for DX and for ease-of-development of the library, but I have to test what this means for code-splitting, my guess is probably not great. Threejs is overall not that great with code-splitting (400kb for hello world lol, 100gzipped), so I wonder if the extra kbs matter or not. A minimized fork of threejs+solid-triangle (solid-triangle/petite) could be an option too. I am very open for suggestions on this topic.
 - Explore combinations with different `jsx-parser`: p.ex `flexbox-canvas-parser` as map for `<Texture.Canvas/>` to easily integrate layouts/typographic compositions inside a threejs-environment.
 - I wanna look into ways how to bring in post-processing && writing/combining shaders into the workflow.
 - It's a pity `<JSX/>` will always be typed to `JSX.Element`. This means we can not really properly type-check, but only do runtime-checks.
+- modelviewer's way of annotating labels is nice
   
 ## TODO
 - [ ] Cover the full API of threejs with all the constructor-parameters as props
