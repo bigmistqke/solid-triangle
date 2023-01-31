@@ -578,17 +578,22 @@ const App => (
 ## Plans/Overall ambitions for the project/Reflections
 
 - Explore the limits of `@solid-primitives/jsx-parser`
-  - `jsx-parser` offers a way to write custom renderers without using solid's `universal renderer`. Solid's `universal renderer` is very powerful, but is a bit finnicky to set-up in a new project and, afaik, only offers a top-down way of writing the renderer: all parsing logic is done from the renderer. `jsx-parser` offers a way to write a custom renderer a bit more similarly to how you would write a solid-app: logic can be done top-down but also be compartimentalized inside components themselves. `jsx-parser` allows for mixing and matching with different parsers and regular solid-code. This offers a lot of flexibility, but can can also be the cause of more repeated code in the codebase.
+  - `jsx-parser` offers a way to write custom renderers without using solid's `universal renderer`. Solid's `universal renderer` is very powerful, but is a bit finnicky to set-up in a new project and, afaik, only offers a top-down way of writing the renderer: all parsing logic is done from the renderer. `jsx-parser` offers a way to write a custom renderer a bit more similarly to how you would write a solid-app: logic can be done top-down but also be compartimentalized inside components themselves. `jsx-parser` allows for mixing and matching with different parsers and regular solid-code. This offers a lot of flexibility, but can can also be the cause of more repeated code in the codebase + since it's not a reconciler, you have to manually update the library to keep in sync with the wrapped library's update cycle [which could cause maintenance-exhaustion](https://twitter.com/0xca0a/status/1561789151996952577)
 - Types
-  - Advance typing components with JSDoc
+  - Advance typing components with JSDoc (seems like a lot of work, could we get the typings of threejs in our components, and enhance them with extra props?)
   - Improve type-readability
     - I use some type-helpers to infer types from `threejs` to help w the development, but it makes the types of the props practically unreadable.
+    
 - Minimize the threejs-load
-  - Currently I namespace the components like `<Material.Mesh.Basic/>` because this is really great for DX and for ease-of-development of the library, but I have to test what this means for code-splitting, my guess is probably not great. Threejs is overall not that great with code-splitting (400kb for hello world lol, 100gzipped), so I wonder if the extra kbs matter or not. A minimized fork of threejs+solid-triangle (solid-triangle/petite) could be an option too. I am very open for suggestions on this topic.
+  - Currently I namespace the components like `<Material.Mesh.Basic/>` because I like the DX and it simplifies the development of this library, but I have to test what this means for code-splitting, my guess is 'not great'. Threejs is overall not that great with code-splitting (400kb for hello world lol, 100gzipped), so I wonder if the extra kbs matter or not.
+    - yes it definitely does, with all the imported controls etc... I will probably go back to more conventional writing.
+  - A minimized fork of threejs+solid-triangle (solid-triangle/petite) could be an option too.
+  - Maybe a port to claygl?
 - Explore combinations with different `jsx-parser`: p.ex `flexbox-canvas-parser` as map for `<Texture.Canvas/>` to easily integrate layouts/typographic compositions inside a threejs-environment.
 - I wanna look into ways how to bring in post-processing && writing/combining shaders into the workflow.
 - It's a pity `<JSX/>` will always be typed to `JSX.Element`. This means we can not really properly type-check, but only do runtime-checks.
-- modelviewer's way of annotating labels is nice
+- [Modelviewer's way of annotating labels is nice](https://modelviewer.dev/examples/annotations/index.html)
+- [Discourse on wrapper vs renderer](https://threlte.xyz/core-transition#svelte-does-not-have-custom-renderers)
   
 ## TODO
 - [ ] Cover the full API of threejs with all the constructor-parameters as props
