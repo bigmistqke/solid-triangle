@@ -8,8 +8,8 @@
 
 🔺 easily extendable threejs-renderer for solidjs 🔺<br>
 🔥 powered by [@solid-primitives/jsx-parser](https://github.com/solidjs-community/solid-primitives/tree/main/packages/jsx-parser#readme) 🔥<br>
-renderer without usage of [universal renderer](https://github.com/solidjs/solid/releases/tag/v1.2.0)
-🚧 currently just an experiment 🚧
+renderer without usage of [universal renderer](https://github.com/solidjs/solid/releases/tag/v1.2.0)<br>
+🚧 an experiment 🚧
 
 ## Quick start
 
