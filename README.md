@@ -7,9 +7,12 @@
 [![pnpm](https://img.shields.io/badge/maintained%20with-pnpm-cc00ff.svg?style=for-the-badge&logo=pnpm)](https://pnpm.io/)
 
 🔺 easily extendable threejs-renderer for solidjs 🔺<br>
-🔥 powered by [@solid-primitives/jsx-parser](https://github.com/solidjs-community/solid-primitives/tree/main/packages/jsx-parser#readme) 🔥<br>
+🔥 powered by [@solid-primitives/jsx-tokenizer](https://github.com/solidjs-community/solid-primitives/tree/main/packages/jsx-tokenizer#readme) 🔥<br>
 renderer without usage of [universal renderer](https://github.com/solidjs/solid/releases/tag/v1.2.0)<br>
 🚧 an experiment 🚧
+
+> This project started as an experiment to explore the API of 
+[@solid-primitives/jsx-tokenizer](https://github.com/solidjs-community/solid-primitives/tree/main/packages/jsx-tokenizer#readme). Since then I came across the [discussion on wrappers/reconcilers in between `threlte` and `react-three-fiber`](https://threlte.xyz/core-transition#svelte-does-not-have-custom-renderers) which made me re-evaluate if it's better to invest in this library or to contribute to `solid-three` (solid's `react-three-fiber` port). I have yet to come to a conclusion on this.
 
 ## Quick start
 
@@ -584,17 +587,6 @@ const App => (
   - Advance typing components with JSDoc (seems like a lot of work, could we get the typings of threejs in our components, and enhance them with extra props?)
   - Improve type-readability
     - I use some type-helpers to infer types from `threejs` to help w the development, but it makes the types of the props practically unreadable.
-    
-- Minimize the threejs-load
-  - Currently I namespace the components like `<Material.Mesh.Basic/>` because I like the DX and it simplifies the development of this library, but I have to test what this means for code-splitting, my guess is 'not great'. Threejs is overall not that great with code-splitting (400kb for hello world lol, 100gzipped), so I wonder if the extra kbs matter or not.
-    - yes it definitely does, with all the imported controls etc... I will probably go back to more conventional writing.
-  - A minimized fork of threejs+solid-triangle (solid-triangle/petite) could be an option too.
-  - Maybe a port to claygl?
-- Explore combinations with different `jsx-parser`: p.ex `flexbox-canvas-parser` as map for `<Texture.Canvas/>` to easily integrate layouts/typographic compositions inside a threejs-environment.
-- I wanna look into ways how to bring in post-processing && writing/combining shaders into the workflow.
-- It's a pity `<JSX/>` will always be typed to `JSX.Element`. This means we can not really properly type-check, but only do runtime-checks.
-- [Modelviewer's way of annotating labels is nice](https://modelviewer.dev/examples/annotations/index.html)
-- [Discourse on wrapper vs renderer](https://threlte.xyz/core-transition#svelte-does-not-have-custom-renderers)
   
 ## TODO
 - [ ] Cover the full API of threejs with all the constructor-parameters as props
@@ -603,6 +595,8 @@ const App => (
   - `<Vector3 x={0} y={1} z={2}/>` 👉 `<Vector3 xyz={[0,1,2]}/>`
   - `<Curve.Bezier v0={<Vector3/>} v1={<Vector3/>} v2={<Vector3/>}/>` 👉 `<Curve.Bezier points={[<Vector3/>,<Vector3/>,<Vector3/>]}/>` or `<Curve.Bezier><Vector3/><Vector3/><Vector3/></Cubic.Bezier>`
   - `<Material.Mesh.Basic map={<Texture source="./example.jpg"/>}/>` 👉 `<Material.Mesh.Basic><Texture id="map" source="./example.jpg"/></Material.Mesh.Basic/>`
+- [ ] Roll back the namespaced naming since it's disables treeshaking
+- [ ] Performance comparison with `solid-three` to see if `solid-triangle` is a valid strategy.
 - [ ] Website
   - Docs
   - Examples
